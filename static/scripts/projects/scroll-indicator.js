@@ -9,8 +9,8 @@
   hint.className = 'scroll-hint';
   hint.setAttribute('aria-hidden', 'true');
   hint.innerHTML = `
-    <span class="scroll-hint__desk">🡠 SCROLL 🡢</span>
-    <span class="scroll-hint__mob">🡡 SCROLL 🡣</span>
+    <span class="scroll-hint__desk">SCROLL ⇄</span>
+    <span class="scroll-hint__mob">SCROLL ⇵</span>
   `;
   document.body.appendChild(hint);
 

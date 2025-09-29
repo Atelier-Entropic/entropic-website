@@ -41,6 +41,9 @@ body{
 }
 
 .menu-toggle {color: white;}
+.menu-toggle.active {
+    color: black;
+  }
 
 @media (max-width: 1300px) {
 

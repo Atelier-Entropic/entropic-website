@@ -118,6 +118,7 @@ p  { font-size: 1rem; }
   padding: 1rem;
 }
 .dropdown-toggle {
+  color: black;
   background: none;
   border: none;
   width: 100%;
@@ -148,6 +149,7 @@ p  { font-size: 1rem; }
 
 /**DROPDOWN ARROW**/
 .arrow {
+  color:black;
   display: inline-block;
   transition: transform 0.3s ease;
 }

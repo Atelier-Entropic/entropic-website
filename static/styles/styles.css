@@ -181,6 +181,7 @@ body {
   }
 
   .menu-toggle {
+    color: #000000;
     display: block;
     background: none;
     border: none;
