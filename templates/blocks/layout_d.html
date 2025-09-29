@@ -1,0 +1,6 @@
+<section class="block-d">
+  <div class="block-d__text block-text">
+    {% if block.title %}<h3>{{ block.title }}</h3>{% endif %}
+    {% if block.text %}<p>{{ block.text|linebreaks }}</p>{% endif %}
+  </div>
+</section>

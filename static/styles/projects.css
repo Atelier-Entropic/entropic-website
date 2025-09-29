@@ -1,0 +1,535 @@
+/* !This CSS is SPECIFICALLY for PROJECTS PAGE */
+
+/*!GLOBAL*/
+:root { --headerH: 72px; } /* adjust to your real header height */
+
+body {
+  background-color: #f9f9f9;
+  overflow-x: hidden;
+}
+
+/*!GALLERY*/
+.projects-gallery {
+  position: fixed;
+  top: 0; left: 0;
+  column-count: 4;
+  column-gap: 1rem;
+  padding: 1rem 2rem;
+  width: 100vw;
+  column-fill: auto;
+  z-index: -10;
+}
+.projects-gallery,
+.projects-gallery * { box-sizing: border-box; }
+
+.project {
+  display: inline-block;
+  width: 100%;
+  break-inside: avoid;
+  margin-bottom: 1rem;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.project.fade-out { opacity: 0; }
+
+.project img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.image-wrapper.vertical::before {
+  content: '';
+  display: block;
+  height: calc(192.5vh/3 - 0.5rem);
+  aspect-ratio: 2/3;
+}
+.image-wrapper.horizontal::before {
+  content: '';
+  display: block;
+  height: calc((192.5vh/3 - 0.5rem)/2 - 0.5rem);
+}
+.image-wrapper img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* === Reveal on scroll: zoom-in + fade === */
+@keyframes zoomInReveal {
+  from { transform: scale(1.05); }
+  to   { transform: scale(1); }
+}
+
+/* initial (before reveal) */
+.project.anim .image-wrapper img {
+  transform: scale(1.05);
+  will-change: transform;
+}
+
+/* play animation once when in view */
+.project.anim.in .image-wrapper img {
+  animation: zoomInReveal 1s ease-out forwards;
+}
+
+/* optional: text blocks also fade/slide in */
+@keyframes fadeSlideIn {
+  from { transform: translateY(8px); }
+  to   { transform: translateY(0); }
+}
+.project.text-block.anim { transform: translateY(8px); }
+.project.text-block.anim.in { animation: fadeSlideIn .8s ease-out forwards; }
+
+/* Accessibility: disable if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .project.anim .image-wrapper img,
+  .project.text-block.anim { transform: none; animation: none !important; }
+}
+
+
+/*!OVERLAY DESCRIPTION*/
+.image-wrapper .overlay {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
+  z-index: 2; /* above image */
+}
+.image-wrapper:hover .overlay { opacity: 1; }
+
+.overlay-text { margin-top: auto; }
+
+.project-title {
+  font-size: 1.5rem;
+  margin: 0 0 1rem 0;
+  font-family: 'Halyard-Display', sans-serif;
+  font-weight: 200;
+}
+.project-desc {
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.2;
+  padding-right: 3rem;
+}
+
+/*!OVERLAY — ARROWS*/
+.overlay-arrows {
+  z-index: 3;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+.arrow {
+  color: white;
+  font-size: 1.25rem;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease;
+}
+.arrow:hover { transform: scale(1.2); }
+
+.image-link {
+  position: absolute;
+  inset: 0;
+  display: block; /* ensures link fills wrapper */
+  z-index: 1;
+}
+
+/*!BLACK TEXT BLOCKS*/
+.project.text-block {
+  display: inline-block;
+  width: 100%;
+  break-inside: avoid;
+  padding: 2rem;
+  background-color: #111;
+  color: white;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+}
+.project.text-block h3 {
+  margin-bottom: 2rem;
+  padding-right: 3rem;
+}
+.project.text-block p {
+  line-height: 1.6;
+  padding: 0.5rem 0;
+}
+
+/*!RESPONSIVE — GALLERY & OVERLAY*/
+@media (max-width: 1200px) {
+  .projects-gallery { column-count: 3; }
+  .project-title { font-size: 1rem; margin: 0 0 0.5rem 0; }
+  .project-desc { font-size: 0.8rem; }
+}
+
+@media (min-width: 481px) {
+  .projects-gallery { height: 105vh; overflow-x: scroll; }
+}
+
+@media (max-width: 768px) {
+  .projects-gallery {
+    column-gap: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .project { margin-bottom: 0.5rem; }
+  .image-wrapper.vertical::before   { height: calc(190vh/3 - 0.25rem); }
+  .image-wrapper.horizontal::before { height: calc((190vh/3 - 0.25rem)/2 - 0.25rem); }
+}
+
+@media (max-width: 600px) {
+  .projects-gallery { column-count: 1; }
+}
+
+@media (max-width: 480px){
+  .projects-gallery{
+    position: static;
+    top: 0;
+    height: auto;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
+    column-count: 1;
+    column-gap: 0.5rem;
+    padding: 0;
+  }
+}
+
+/*!RESPONSIVE — TEXT BLOCKS*/
+@media (max-width: 1200px) {
+  .project.text-block { padding: 1rem; }
+  .project.text-block h3 { padding-right: 1rem; }
+  .project.text-block p {
+    line-height: 1.2;
+    padding: 0.5rem 0;
+  }
+}
+@media (max-width: 768px) {
+  .project.text-block { padding: 1rem; }
+  .project.text-block h3 { padding-right: 1rem; }
+}
+
+
+
+
+/*--------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------*/
+
+
+
+:root{
+  --headerH: 72px;        /* adjust if your header height differs */
+  --fabSize: 52px;        /* mobile floating button size */
+  --fabGap: 16px;         /* distance from screen edges */
+}
+
+/*!FILTERS — TOGGLE BUTTON*/
+.filters-toggle {
+  display: block;
+  margin: 0 2rem 0.75rem auto; /* right-aligned */
+  padding: 0.5rem 0.9rem;
+  background: #000;
+  color: #fff;
+  border:none;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  z-index: 20;
+  align-items: center;
+}
+
+/*!FILTERS — DROPDOWN (DRAWER UNDER BUTTON)*/
+#filtersDrawer {
+  position: absolute;            
+  width: 220px; 
+  padding: .5rem .6rem;
+  background: #fff;
+  border-radius: 12px;
+  z-index: 20;
+  opacity: 0;
+  transform: scale(.98) translateY(-4px);
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease;
+}
+#filtersDrawer.is-open {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+
+/*!FILTERS — CLOSE BUTTON*/
+#filtersClose {
+  position: absolute;
+  top: 6px; right: 6px;                                         
+  width: 26px; height: 26px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid #e6e6e6;
+  border-radius: 6px;
+  background: #fff;
+  color: #000;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/*!FILTERS — PANEL LAYOUT + WORD-ONLY ITEMS*/
+#filtersPanel.filter-bar {
+  display: grid;
+  gap: .35rem;
+  margin: 0;
+  padding: 0;
+}
+
+#filtersPanel .category-menu {
+  display: grid;
+  gap: .2rem;
+}
+
+#filtersPanel .filter-btn {
+  all: unset;                    /* plain word */
+  display: block;
+  cursor: pointer;
+  font-size: .98rem;
+  line-height: 1.3;
+  color: #7a7a7a;                /* inactive grey */
+  padding: .15rem .2rem;
+  background: transparent;
+  border: 0;
+  outline: none;
+}
+
+#filtersPanel .filter-btn:hover { color: #111; }
+#filtersPanel .filter-btn.active {
+  color: #111;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+
+/*!FILTERS — LOCATION SUBMENU*/
+
+#filtersPanel .location-dropdown { position: relative; }
+#filtersPanel #locationToggle {
+  all: unset;
+  display: block;
+  cursor: pointer;
+  font-size: .98rem;
+  outline: none;
+  background: #000;
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.5rem 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  width: calc(220px - 1.8rem)           /* looks clean inside the drawer */
+}
+
+#filtersPanel #locationToggle.active{
+  color: #fff;
+  text-decoration: none;
+}
+
+
+#filtersPanel #locationMenu.dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0; right: 0;
+  width: 100%;
+  background: #fff;
+  border: 0;
+  padding: .25rem .4rem;
+  z-index: 21;
+  color:#7a7a7a;
+  padding:.35rem .2rem;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: max-height .25s ease, opacity .18s ease, transform .18s ease;
+}
+
+#filtersPanel #locationMenu.dropdown.show {
+  max-height: 420px;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+#filtersPanel #locationMenu li {
+  list-style: none;
+  padding: .35rem .2rem;
+  color: #444;
+  cursor: pointer;
+}
+
+#filtersPanel #locationMenu li:hover { color: #111; }
+
+#filtersPanel .location-dropdown{ position: relative; right: auto; }
+#filtersPanel #locationMenu.dropdown{
+  left: 0; right: 0; width: 100%; padding: 0 .75rem;
+}
+
+/** Accessibility: show focus without browser outlines */
+
+#filtersPanel .filter-btn:focus-visible,
+#filtersPanel #locationToggle:focus-visible,
+#filtersPanel #locationMenu li:focus-visible{
+  outline: none;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+
+
+/*!RESPONSIVE — FILTERS*/
+
+@media (max-width: 1000px){
+  /* Make sure the FAB is bottom-right */
+  .filters-toggle{
+    position: fixed;
+    bottom: var(--fabGap,16px);
+    right:  var(--fabGap,16px);
+    margin: 0;
+    width: var(--fabSize,52px);
+    height: var(--fabSize,52px);
+    padding: 0;
+    border-radius: 999px ;
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    z-index: 20;
+  }
+
+  .filters-drawer{
+    position: fixed !important;
+    top: auto !important;  
+    left: auto !important;
+    right: var(--fabGap,16px) !important;
+    bottom: calc(var(--fabGap,16px) + var(--fabSize,52px) + 10px); /* sits above button */
+    height: auto !important;
+    transform: translateY(8px) scale(.98) !important;
+    will-change: transform, opacity;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  #filtersPanel #locationMenu.dropdown{
+    position: absolute !important;
+    inset: auto 0 100% 0;
+    width: 100% !important;
+    transform: none !important;
+    margin-bottom: .5rem;
+    background: #fff;
+  }
+
+  .filters-drawer::after{
+    border: 0 !important;
+  }
+}
+
+/*!FILTERS — INLINE SWAP MODE (minimal helpers)-------------------------------------------------------------- */
+#filtersPanel { position: relative; }
+
+#filtersPanel .inline-filters{
+  display: none;
+  gap: .2rem;
+}
+
+#filtersPanel.swap-mode .category-menu{ display: none; }
+#filtersPanel.swap-mode .inline-filters{ display: grid; }
+
+/* word-only “chips” to match your buttons */
+#filtersPanel .inline-filters .chip{
+  all: unset;
+  display: block;
+  cursor: pointer;
+  font-size: .98rem;
+  line-height: 1.3;
+  color: #7a7a7a;
+  padding: .15rem .2rem;
+}
+#filtersPanel .inline-filters .chip:hover{ color:#111; }
+#filtersPanel .inline-filters .chip.active{
+  color:#111;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+
+/* tiny fade helper */
+.fade { transition: opacity .22s ease, transform .22s ease; }
+.fade.out { opacity: 0; transform: translateY(-4px); }
+.fade.in  { opacity: 1; transform: translateY(0); }
+
+
+/*! SCROLL HINT PILL !*/
+.scroll-hint{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%) scale(1.05);
+  z-index: 20;
+  padding: .6rem 1rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-family: 'Halyard-Display', sans-serif;
+  letter-spacing: .02em;
+  color: #111;
+  background: rgba(255,255,255,.50);
+  pointer-events: none;
+  opacity: 0;
+  animation: hintZoomIn 1.5s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+.scroll-hint--hidden{
+  animation: hintZoomOut 1.5s ease-out forwards;
+}
+
+/* initial pop-in */
+@keyframes hintZoomIn{
+  from{ transform: translate(-50%,-50%) scale(1.05); opacity: 0; }
+  to  { transform: translate(-50%,-50%) scale(1);   opacity: 1; }
+}
+
+@keyframes hintZoomOut {
+  from {
+    transform: translate(-50%,-50%) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%,-50%) scale(0.95);
+    opacity: 0;
+  }
+}
+
+/* desktop copy shows left/right, mobile shows up/down */
+.scroll-hint__desk{ display: inline; }
+.scroll-hint__mob { display: none;  }
+
+@media (max-width: 480px){
+  .scroll-hint__desk{ display: none; }
+  .scroll-hint__mob { display: inline; }
+}
+
+

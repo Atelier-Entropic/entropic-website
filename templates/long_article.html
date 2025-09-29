@@ -1,0 +1,23 @@
+                    <header class="article-header">
+                        <div class="article-title-wrap">
+                            <h1 class="article-title">{{ article.title }}</h1>
+                        </div>
+                        <div class="article-meta">
+                            <div class="article-index">{{ article.display_index_2d }}</div>
+                            <div class="article-subtitle">{{ article.date }}</div>
+                        </div>
+                    </header>
+
+                    <div class="long-article-grid">
+                        {% for block in article.blocks.all %}
+                            {% if block.layout_type == "layout_a" %}
+                                {% include "blocks/layout_a.html" %}
+                            {% elif block.layout_type == "layout_b" %}
+                                {% include "blocks/layout_b.html" %}
+                            {% elif block.layout_type == "layout_c" %}
+                                {% include "blocks/layout_c.html" %}
+                            {% elif block.layout_type == "layout_d" %}
+                                {% include "blocks/layout_d.html" %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>

@@ -1,0 +1,53 @@
+<header class="article-header">
+    <div class="article-title-wrap">
+        <h1 class="article-title">{{ article.title }}</h1>
+    </div>
+
+    <div class="article-meta">
+        <div class="article-index">{{ article.display_index_2d }}</div>
+        <div class="article-subtitle">{{ article.date }}</div>
+    </div>
+</header>
+
+
+{% with imgs=article.images.all|slice:":4" %}
+  {% if imgs|length == 1 %}
+    {# 1 image → hero right, text left (reuse Block B) #}
+    <section class="block-b block-b--short">
+
+      <div class="block-b__col block-b__col--image">
+        <figure class="block-media">
+          <img src="{{ imgs.0.image.url }}" alt="{{ imgs.0.alt|default:article.title }}">
+        </figure>
+      </div>
+
+      <div class="block-b__col block-b__col--text">
+        <div class="block-text">
+          {% for p in article.body_paragraphs %}<p>{{ p }}</p>{% endfor %}
+        </div>
+      </div>
+      
+    </section>
+  {% else %}
+    {# 2–4 images → text block + responsive gallery #}
+
+
+    <section class="short-gallery short-gallery--{{ imgs|length }}">
+      {% for img in imgs %}
+        {% if img.image %}
+          <figure class="short-gallery__item block-media">
+            <img src="{{ img.image.url }}" alt="{{ img.alt|default:article.title }}">
+          </figure>
+        {% endif %}
+      {% endfor %}
+    </section>
+
+    <section class="block-d">
+      <div class="block-d__text block-text">
+        {% for p in article.body_paragraphs %}<p>{{ p|linebreaks }}</p>{% endfor %}
+      </div>
+    </section>
+    
+  {% endif %}
+{% endwith %}
+

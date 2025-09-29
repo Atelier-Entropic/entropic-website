@@ -1,0 +1,25 @@
+<!-- ============================================
+  Layout A — Hero + 2 Small Images + Title + Text
+  Layout B — Hero Image on Right, Title + Text on Left
+============================================ --> 
+
+
+<section class="block-b">
+  <div class="block-b__col block-b__col--text">
+    <div class="block-text">
+      {% if block.title %}<h3>{{ block.title }}</h3>{% endif %}
+      {% if block.text %}<p>{{ block.text|linebreaks }}</p>{% endif %}
+    </div>
+  </div>
+  <div class="block-b__col block-b__col--image">
+    {% if block.image_1 %}
+      <figure class="block-media">
+        <img src="{{ block.image_1.url }}" alt="{{ block.title|default:article.title }}">
+      </figure>
+    {% else %}
+      <figure class="ph"></figure>
+    {% endif %}
+  </div>
+</section>
+
+

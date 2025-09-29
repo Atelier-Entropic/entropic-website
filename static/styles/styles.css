@@ -1,0 +1,413 @@
+/*!This is an overall style page (Header and Footers)*/
+
+/*!OVERALL STYLES**/
+
+
+body, p, a, ul, button, h4, tr {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-family: 'Fustat', sans-serif;
+  text-decoration: none;
+  line-height: 1.2;
+}
+h1, h2, h3 {
+  margin: 0;
+  padding: 0;
+  font-family: 'Halyard-Display', sans-serif;
+  text-decoration: none;
+  font-weight: 200;
+  line-height: 1;
+}
+h1 {font-size: 5rem;}
+h2 {font-size: 4rem;}
+h3 {font-size: 3rem;}
+h4 {font-size: 1.5rem;}
+p {font-size: 1rem;}
+tr {font-size: 1rem;}
+a {
+    color: black;
+    text-decoration: underline;
+}
+
+/*!OVERALL TEXT STYLES ADJUSTMENTS FOR SCREENS**/
+@media (max-width: 1200px) {
+  h1 {font-size: 4rem; line-height: 1;}
+  h2 {font-size: 3rem; line-height: 1;}
+  h3 {font-size: 2rem; line-height: 1;}
+  h4 {font-size: 1.2rem;}
+  p {font-size: 1rem; line-height: 1.2;}
+}
+@media (max-width: 800px) {
+  h1 {font-size: 3rem; line-height: 1;}
+  h2 {font-size: 2rem; line-height: 1;}
+  h3 {font-size: 1.5rem; line-height: 1;}
+  h4 {font-size: 1.1rem;}
+  p {font-size: 0.8rem; line-height: 1.2;}
+  tr {font-size: 0.8rem; line-height: 1.2;}
+}
+
+.page-home {
+    background: #f0f0f0;
+}
+
+figure {
+  margin: 0; /* overrides all logical margin values */
+}
+
+
+/*!HEADER**/
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%
+}
+.logo-svg {
+  height: 1.5rem;
+  display: block;
+  padding-left: 2rem;
+}
+
+.nav-menu {
+  margin-right: 32px;
+  background: white;
+  display: flex;
+  gap: 24px;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  border: 1.5px solid transparent
+}
+.nav-link {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2rem;
+  height: 1rem; 
+  padding: 0.3rem 1rem;
+  border: 2px solid transparent;
+  border-radius: 9999px;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+}
+.nav-link.active {
+  border: 1.5px solid black;
+}
+.nav-link.press-button {
+  background: #000000;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2rem;
+  height: 1rem; 
+  padding: 0.3rem 1rem;
+  border: 2px solid transparent;
+  border-radius: 9999px;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+}
+
+/*TODO:FIX FALLBACK LATER**/
+.nav-link:hover { 
+    background: linear-gradient(to right, #666666, #000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+.nav-link.press-button:hover { 
+    background: #e6e6e6;
+    -webkit-background-clip: none;
+    -webkit-text-fill-color: black;
+    background-clip: none;
+    text-fill-color: black;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+/*!HEADER ADJUSTMENTS FOR SCREENS**/
+@media (max-width: 1000px) {
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 50%;
+    background: white;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+    border-left: 1.5px solid black;
+    z-index: 999;
+    border-radius: 0;
+    margin-right: 0;
+
+    /* Animation setup */
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.3s ease;
+  }
+
+  .nav-menu.show {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+
+  .nav-link {
+    margin-right: 4rem;
+  }
+
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.9s ease;
+  }
+
+  /* Rotate when active */
+  .menu-toggle.active {
+    transform: rotate(180deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-svg {
+    height: 1.2rem;
+    padding-left: 1rem;
+  }
+}
+
+/*!FOOTER POP-UP**/
+.footer-popup {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  max-width: 432px;
+  background-color: white;
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  font-size: 16px;
+  line-height: 1.4;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: bottom 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.footer-popup button {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: black;
+  line-height: 1;
+}
+.footer-popup.raised {
+  bottom: 5rem;
+}
+
+/*!STATIC FOOTER*/
+.static-footer {
+  display: none;
+  padding: 2rem;
+  margin: 1rem 2rem;
+  border-radius: 22px;
+  background-color: white;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  
+}
+.footer-left {
+  padding-right: 10rem;
+  flex: 1;
+
+  max-width: 30ch;
+}
+.footer-right {
+  display: flex;
+  flex: 1;
+ 
+  max-width: 30ch;
+  gap: 2rem;
+}
+.footer-right-col {
+  flex: 1;
+  min-width: 160px;
+}
+
+/*!MINI-FOOTER**/
+.mini-footer {
+  margin: 1rem 2rem;
+  padding: 0.2rem 1.25rem;
+  border-radius: 9999px;
+  background-color: white;
+  line-height: 1rem;
+  position: relative;
+}
+.mini-footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.social-icons a {
+  display: inline-block;
+  margin-right: 0.2rem;
+  padding: 4px;
+  vertical-align: middle;
+}
+.social-icons a img {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+.copyright {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  white-space: nowrap;
+}
+
+/*!FOOTER'S ADJUSTMENTS FOR SCREENS**/
+/* ===== Responsive footer (REPLACE prior 1000/768/600 blocks) ===== */
+
+/* Tablet and down: switch to Grid, keep type ≥ 0.5rem */
+@media (max-width: 1024px) {
+  .static-footer { 
+    font-size: clamp(0.7rem, 2.5vw, 1rem);
+  }
+
+  .footer-content {
+    display: grid; /* replace flex */
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 2rem;
+    align-items: start;
+  }
+
+  .footer-left,
+  .footer-right {
+    padding-right: 0;  
+    min-width: 0;  
+    margin-bottom: 1rem;  
+  }
+
+  .footer-right {
+    display: grid;     /* columns become grid cells */
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 2rem;
+  }
+
+  .footer-right-col { min-width: 0; }
+}
+
+/* Mobile (≤768): single column stack */
+@media (max-width: 768px) {
+  .static-footer { 
+    font-size: clamp(0.6rem, 2.5vw, 0.9rem);
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr; /* stack all */
+    gap: 1rem;
+  }
+
+  .footer-left,
+  .footer-right {
+    grid-column: 1 / -1; /* full width rows */
+  }
+
+  .footer-right {
+    display: grid;
+    grid-template-columns: 1fr; /* each col becomes a row */
+    gap: 0.75rem;
+  }
+
+  /* Keep your existing mini-footer tweaks, but consolidate here */
+  .mini-footer {
+    margin: 1rem;
+    padding: 0.2rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  .mini-footer-content {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .social-icons a { padding: 2px; margin-right: 0; }
+  .social-icons a img { width: 1.5rem; height: 1.5rem; }
+  .social-icons { flex: 0 0 auto; display: flex; gap: 0; }
+  .copyright {
+    position: static;
+    transform: none;
+    white-space: normal;
+    margin-top: 0.25rem;
+    text-align: right;
+    flex: 1 1 auto;
+  }
+
+  /* Optional: if you use a .footer-popup on mobile */
+  .footer-popup { bottom: 1rem; right: 1rem; font-size: 0.8rem; }
+}
+
+/* Very small phones */
+@media (max-width: 480px) {
+  .static-footer { font-size: clamp(0.5rem, 3vw, 0.8rem); }
+
+  /* Compact mini-footer row */
+  .mini-footer-content {
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+  }
+  .social-icons { flex-shrink: 0; }
+  .copyright { text-align: right; white-space: normal; flex-grow: 1; }
+
+  /* If you cap popup width on tiny screens */
+  .footer-popup { max-width: 232px; }
+}
+
+
+/*!PROJECTS PAGE ADDITIONAL CUSTOMIZATION**/
+/* .page-projects .nav-menu {
+  border: 1.5px solid black;
+}
+@media (max-width: 1000px) {
+  .page-projects .nav-menu {
+    border: transparent;
+    border-left: 1.5px solid black;
+  }
+}
+.page-projects .footer-popup,
+.page-projects .static-footer,
+.page-projects .mini-footer {
+  border: 1.5px solid black !important;
+} */
+

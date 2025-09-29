@@ -1,0 +1,25 @@
+<section class="block-c">
+  {% if block.image_1 %}
+    <figure class="block-c__item block-media">
+      <img src="{{ block.image_1.url }}" alt="{{ block.title|default:article.title }}">
+    </figure>
+  {% endif %}
+
+  {% if block.image_2 %}
+    <figure class="block-c__item block-media">
+      <img src="{{ block.image_2.url }}" alt="{{ block.title|default:article.title }}">
+    </figure>
+  {% endif %}
+
+  {% if block.image_3 %}
+    <figure class="block-c__item block-media">
+      <img src="{{ block.image_3.url }}" alt="{{ block.title|default:article.title }}">
+    </figure>
+  {% endif %}
+
+  {% if block.image_4 %}
+    <figure class="block-c__item block-media">
+      <img src="{{ block.image_4.url }}" alt="{{ block.title|default:article.title }}">
+    </figure>
+  {% endif %}
+</section>

@@ -1,0 +1,344 @@
+/*!This is a particular project style page*/
+
+/*!OVERALL OVERRIDES**/
+body {
+    background: white;
+    overflow-x: hidden;
+}
+.static-footer {
+  display: block;
+  ;
+}
+.footer-wrapper {
+  background-color: #f9f9f9;
+  padding: 1rem 0 1rem 0; /* Add breathing room around the white footers */
+}
+.mini-footer {
+  margin-bottom: 0;
+}
+
+/*!INTRODUCTION**/
+.project-name {
+  display: flex;
+  align-items: flex-end;
+  gap: 2rem;
+  padding: 2rem 0 2rem 2rem;
+  width: 100%;
+  overflow-y: hidden;
+  margin-bottom: 2.5rem;
+  
+}
+.project-name .intro {
+  flex: 1 1 auto;
+  min-width: 0;
+  
+}
+.project-name h1 {
+  font-size: 12rem;
+  font-weight: 500;
+  line-height: 0.75;
+  margin-bottom: 2rem;
+  margin-top: 8rem;
+
+}
+.project-name h4 {
+  margin-top: 5rem;
+  line-height: 1.2;
+  max-width: 50ch;
+
+}
+.project-name .img-aside {
+  flex: 0 0 auto;
+  max-width: 60vw;
+  width: 100%;
+}
+.project-name .img-aside img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transform: translateY(4rem);
+}
+
+/*!INTRODUCTION ADJUSTMENTS FOR SCREENS**/
+@media (max-width: 1400px) {
+    .project-name h1 {
+      font-size: 12rem;
+    }
+
+    .project-name .img-aside {
+      max-width: 50vw;
+    }
+    .project-name .img-aside img {
+      transform: translateY(2rem);
+    }
+}
+
+@media (max-width: 1000px) {
+    .project-name .img-aside {
+      visibility: hidden;
+    }
+}
+
+@media (max-width: 768px) { 
+    .project-name {
+      padding: 4rem 0 1rem 1rem;
+      gap: 0rem;
+    }
+
+    .project-name h1 {
+      font-size: 7rem;
+    }
+
+    .project-name h4 {
+      font-size: 1rem;
+      margin-top: 4rem;
+      max-width: 40ch;
+    }
+}
+
+@media (max-width: 400px) { 
+
+    .project-name h1 {
+      font-size: 5rem;
+    }
+
+    .project-name h4 {
+      margin-top: 4rem;
+      max-width: 25ch;
+    }
+}
+/*!SLIDESHOW**/
+.fullscreen-slideshow {
+  position: relative;
+  width: 100vw;
+  aspect-ratio: 16/9; /* Add this if you want fixed height */
+  overflow: hidden;
+}
+.fullscreen-slideshow img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 0;
+}
+.fullscreen-slideshow img.visible {
+  opacity: 1;
+  z-index: 1;
+}
+
+/*!SLIDESHOW ADJUSTMENTS FOR SCREENS**/
+@media (max-width: 768px) {
+  .fullscreen-slideshow {
+    aspect-ratio: 4/5; /* taller container on phones */
+  }
+}
+
+/*!SCROLL ARROW**/
+.scroll-arrow {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  font-size: 2rem;
+  color: white;
+  mix-blend-mode: difference;
+  z-index: 1000;
+  pointer-events: none; /* ensures it's not clickable */
+  opacity: 1;
+  transition: opacity 0.4s ease;
+  background: none;
+  border-color: transparent;
+}
+
+/*!INFO BLOCK**/
+.project-info {
+  display: flex;
+  gap: 8rem;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10rem 6rem;
+  max-width: 1400px;
+  margin: auto;
+  background-color: #ffffff; 
+  flex-wrap: wrap;
+}
+.project-info h2 {
+  margin-bottom: 3rem;
+  min-width: 12ch;
+}
+.info-block {
+  flex: 1 1 40%;
+  min-width: 280px;
+}
+.info-block table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+.info-block td {
+  padding: 0.5rem 0;
+  vertical-align: top;
+}
+.info-block tr:not(:last-child) td {
+  border-bottom: 1.5px solid #222;
+}
+.info-block td:first-child {
+  font-weight: 500;
+  padding-right: 2rem;
+  white-space: nowrap;
+}
+.text-block {
+  flex: 1 1 40%;
+  min-width: 280px;
+}
+.text-block p {
+  margin-bottom: 1rem;
+  max-width: 60ch;
+}
+
+/*!INFO ADJUSTMENTS FOR SCREENS**/
+@media (max-width: 768px) {
+  .project-info {
+    padding: 5rem 3rem;
+    gap: 6rem;
+  }
+  .project-info h2 {
+  margin-bottom: 2rem;
+  }
+  .info-block {
+  min-width: 100px;
+  }
+  .text-block p {
+  max-width: 60ch;
+  }
+}
+@media (max-width: 400px) {
+  .project-info {
+    padding: 5rem 1.5rem;
+    gap: 6rem;
+  }
+  .text-block p {
+  max-width: 55ch;
+  }
+}
+
+/*TODO: Add a zoom in for fullscreen*/
+.horizontal-gallery {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  background: white;
+  padding: 1rem 0;
+  border-bottom: 1.5px solid black;
+  margin-bottom: 7rem;
+}
+.gallery-track {
+  display: flex;
+  gap: 1rem;
+  padding: 0 1rem;
+}
+.gallery-item {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+.gallery-item img {
+  height: 600px; 
+  width: auto;
+  object-fit: cover;
+}
+.gallery-item figcaption {
+  margin-top: 1rem;
+  color: black;
+}
+
+@media (max-width: 768px) {
+  .gallery-item img {
+  height: 300px; 
+  width: auto;
+  object-fit: cover;} 
+}
+
+/** Custom Scrollbar */
+.horizontal-gallery::-webkit-scrollbar {
+  height: 6px;
+}
+.horizontal-gallery::-webkit-scrollbar-track {
+  background: transparent;
+}
+.horizontal-gallery::-webkit-scrollbar-thumb {
+  background: black;
+}
+.horizontal-gallery::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
+/*!SUGGESTIONS**/
+.related-projects {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+.related-projects h2 {
+  margin-bottom: 4rem;
+  font-weight: 300;
+}
+.related-projects-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.related-project {
+  width: 30%;
+  min-width: 280px;
+  text-align: left;
+}
+.related-project img {
+  width: 100%;
+}
+.related-project p,.related-project a {
+  text-decoration: none;
+  margin-top: 10px;
+}
+#relatedCategory {
+  text-decoration: underline;
+  text-decoration-thickness: 4px;
+  text-underline-offset: 0.3rem;
+}
+.related-project img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  display: block;
+}
+
+/*!ANIMATIONS**/
+.fade-in {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

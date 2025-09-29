@@ -1,0 +1,43 @@
+<!--============================================
+  Layout A — Hero + 2 Small Images + Title + Text
+  Matches visual layout provided
+============================================--> 
+<section class="block-a">
+  <div class="block-a__col block-a__col--image">
+    {% if block.image_1 %}
+      <figure class="block-media">
+        <img src="{{ block.image_1.url }}" alt="{{ block.title|default:article.title }}">
+      </figure>
+    {% else %}
+      <figure class="ph"></figure>
+    {% endif %}
+  </div>
+
+  <div class="block-a__col block-a__col--stack">
+    <header class="block-text">
+      {% if block.title %}<h3>{{ block.title }}</h3>{% endif %}
+      {% if block.text %}<p>{{ block.text|linebreaks }}</p>{% endif %}
+    </header>
+
+    <div class="block-a__thumbs">
+      {% if block.image_2 %}
+        <figure class="block-media block-media--sm">
+          <img src="{{ block.image_2.url }}" alt="{{ block.title|default:article.title }}">
+        </figure>
+      {% else %}
+        <figure class="ph block-media--sm"></figure>
+      {% endif %}
+
+      {% if block.image_3 %}
+        <figure class="block-media block-media--sm">
+          <img src="{{ block.image_3.url }}" alt="{{ block.title|default:article.title }}">
+        </figure>
+      {% else %}
+        <figure class="ph block-media--sm"></figure>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+
+
