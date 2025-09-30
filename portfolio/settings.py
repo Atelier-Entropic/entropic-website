@@ -13,17 +13,26 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ---------------------------
 # Core security & debug
-# (Set these in Render → Environment)
+# - Locally: DEBUG defaults to True so runserver “just works”
+# - On Render: set env vars in the dashboard
+#   DEBUG=False, SECRET_KEY=..., ALLOWED_HOSTS=..., CSRF_TRUSTED_ORIGINS=...
 # ---------------------------
 SECRET_KEY = os.environ.get("SECRET_KEY", "dev-secret-key-change-me")
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+DEBUG = os.environ.get("DEBUG", "True").lower() == "true"
 
-# Comma-separated list in env, e.g. "entropic-website.onrender.com,localhost,127.0.0.1"
-ALLOWED_HOSTS = [h for h in os.environ.get("ALLOWED_HOSTS", "").split(",") if h]
-
-# For Render URL, put full https origin(s) here, comma-separated
-# Example: "https://entropic-website.onrender.com"
-CSRF_TRUSTED_ORIGINS = [o for o in os.environ.get("CSRF_TRUSTED_ORIGINS", "").split(",") if o]
+if DEBUG:
+    ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+    CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:8000", "http://localhost:8000"]
+else:
+    # Comma-separated in env (no spaces): "entropic-website.onrender.com,yourdomain.com,www.yourdomain.com"
+    ALLOWED_HOSTS = [h for h in os.environ.get("ALLOWED_HOSTS", "").split(",") if h]
+    # Comma-separated full origins: "https://entropic-website.onrender.com,https://yourdomain.com,https://www.yourdomain.com"
+    CSRF_TRUSTED_ORIGINS = [o for o in os.environ.get("CSRF_TRUSTED_ORIGINS", "").split(",") if o]
+    # Required behind Render's proxy so Django knows it's HTTPS
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+    # Secure cookies in production
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
 
 # ---------------------------
 # Applications
@@ -41,11 +50,11 @@ INSTALLED_APPS = [
 ]
 
 # ---------------------------
-# Middleware (WhiteNoise added)
+# Middleware (WhiteNoise only in production)
 # ---------------------------
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    # "whitenoise.middleware.WhiteNoiseMiddleware",  # serve static files on Render
+    # WhiteNoise gets inserted below when not DEBUG
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -53,6 +62,9 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+if not DEBUG:
+    MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
 
 ROOT_URLCONF = "portfolio.urls"
 
@@ -62,7 +74,7 @@ ROOT_URLCONF = "portfolio.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],  # your /templates folder
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -78,8 +90,8 @@ WSGI_APPLICATION = "portfolio.wsgi.application"
 
 # ---------------------------
 # Database
-# Default: SQLite (works out of the box)
-# If you later add a Postgres on Render, set DATABASE_URL in env.
+# - Local default: SQLite
+# - If DATABASE_URL is set (Render Postgres), use it
 # ---------------------------
 DATABASES = {
     "default": {
@@ -88,18 +100,15 @@ DATABASES = {
     }
 }
 
-# Try using dj-database-url if DATABASE_URL exists (optional, safe if package present)
 if os.environ.get("DATABASE_URL"):
     try:
         import dj_database_url
-
         DATABASES["default"] = dj_database_url.config(
             default=os.environ["DATABASE_URL"],
             conn_max_age=600,
         )
     except Exception:
-        # Falls back to SQLite if package not installed
-        pass
+        pass  # fall back to SQLite if package not installed
 
 # ---------------------------
 # Password validation
@@ -120,18 +129,17 @@ USE_I18N = True
 USE_TZ = True
 
 # ---------------------------
-# Static files (Render + WhiteNoise)
+# Static & Media
 # ---------------------------
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [BASE_DIR / "static"]  # keep if you have /static in your repo
-STATIC_ROOT = BASE_DIR / "staticfiles"    # collectstatic target on Render
+STATICFILES_DIRS = [BASE_DIR / "static"]       # project /static (optional)
+STATIC_ROOT = BASE_DIR / "staticfiles"         # collectstatic target (Render)
 
-# Compressed files & cache-busting
-# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+if DEBUG:
+    STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+else:
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# ---------------------------
-# Media files (your images/)
-# ---------------------------
 MEDIA_URL = "/images/"
 MEDIA_ROOT = BASE_DIR / "images"
 
@@ -139,25 +147,3 @@ MEDIA_ROOT = BASE_DIR / "images"
 # Default primary key
 # ---------------------------
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-# Local dev: turn debug on
-DEBUG = True
-
-# Allow local hosts
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
-
-# (optional but helpful for admin/login locally)
-CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:8000", "http://localhost:8000"]
-
-# remove this line from the hard-coded list:
-# "whitenoise.middleware.WhiteNoiseMiddleware",
-
-# Keep your MIDDLEWARE without WhiteNoise, then add this block **below** it:
-if not DEBUG:
-    MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
-
-# Storage: use WhiteNoise only in prod
-if DEBUG:
-    STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
-else:
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
