@@ -92,11 +92,6 @@
   height: auto;
 }
 
-.hit-svg {
-  width: 125%;
-  height: auto;
-}
-
 .icon-stage.icon-auto {
   min-height: 0;
   height: auto;
@@ -226,6 +221,7 @@
   #innovation { margin-bottom: 0rem; }
 
 }
+
 
 
 /*! TEXT VISIBILITY STATES !*/

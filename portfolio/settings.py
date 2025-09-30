@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 # ---------------------------
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",  # serve static files on Render
+    # "whitenoise.middleware.WhiteNoiseMiddleware",  # serve static files on Render
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -127,7 +127,7 @@ STATICFILES_DIRS = [BASE_DIR / "static"]  # keep if you have /static in your rep
 STATIC_ROOT = BASE_DIR / "staticfiles"    # collectstatic target on Render
 
 # Compressed files & cache-busting
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # ---------------------------
 # Media files (your images/)
@@ -139,3 +139,25 @@ MEDIA_ROOT = BASE_DIR / "images"
 # Default primary key
 # ---------------------------
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Local dev: turn debug on
+DEBUG = True
+
+# Allow local hosts
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+
+# (optional but helpful for admin/login locally)
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:8000", "http://localhost:8000"]
+
+# remove this line from the hard-coded list:
+# "whitenoise.middleware.WhiteNoiseMiddleware",
+
+# Keep your MIDDLEWARE without WhiteNoise, then add this block **below** it:
+if not DEBUG:
+    MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
+
+# Storage: use WhiteNoise only in prod
+if DEBUG:
+    STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+else:
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
