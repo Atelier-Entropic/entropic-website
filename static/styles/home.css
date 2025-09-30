@@ -92,6 +92,11 @@
   height: auto;
 }
 
+.hit-svg {
+  width: 125%;
+  height: auto;
+}
+
 .icon-stage.icon-auto {
   min-height: 0;
   height: auto;
@@ -426,7 +431,6 @@ html, body {
   padding: 8px 10px 5px 10px;
   border: 1.5px solid #111;
   border-radius: 999px;
-  font-weight: 500;
   margin-bottom: 10px;
   line-height: 1;
   align-items: center;
