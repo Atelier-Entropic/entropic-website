@@ -18,5 +18,8 @@ urlpatterns = [
     path("contact/", TemplateView.as_view(template_name="contact.html"), name="contact"),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# REMOVE the DEBUG guard. Serve media in prod until Azure is set up:
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
