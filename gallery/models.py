@@ -50,8 +50,6 @@ class Project(models.Model):
 
     # Intro
     intro_text = models.TextField(blank=True)
-    intro_image = models.ImageField(upload_to='projects/intro/', blank=True, null=True)
-    
 
     # Fullscreen slideshow
     slideshow_1 = models.ImageField(upload_to='projects/slideshow/', blank=True, null=True)
