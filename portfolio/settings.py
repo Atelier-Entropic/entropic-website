@@ -53,7 +53,7 @@ INSTALLED_APPS = [
 # Middleware (WhiteNoise only in production)
 # ---------------------------
 MIDDLEWARE = [
-    "gallery.middleware.media_cache_headers"
+    "gallery.middleware.media_cache_headers",
     "django.middleware.security.SecurityMiddleware",
     # WhiteNoise gets inserted below when not DEBUG
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -65,7 +65,7 @@ MIDDLEWARE = [
 ]
 
 if not DEBUG:
-    MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
+    MIDDLEWARE.insert(2, "whitenoise.middleware.WhiteNoiseMiddleware")
 
 ROOT_URLCONF = "portfolio.urls"
 
