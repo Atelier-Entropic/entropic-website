@@ -198,6 +198,7 @@ body {
 .text-block p {
   margin-bottom: 1rem;
   max-width: 60ch;
+  text-align:justify;
 }
 
 /*!INFO ADJUSTMENTS FOR SCREENS**/
