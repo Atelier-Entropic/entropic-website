@@ -141,7 +141,7 @@ else:
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_URL = "/images/"
-MEDIA_ROOT = BASE_DIR / "images"
+MEDIA_ROOT = os.environ.get("MEDIA_ROOT", str(BASE_DIR / "images"))
 
 # ---------------------------
 # Default primary key
