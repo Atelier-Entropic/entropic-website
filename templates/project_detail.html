@@ -111,7 +111,13 @@
         <div class="gallery-track">
             {% for img in project.gallery_images.all %}
             <figure class="gallery-item">
-                <img src="{{ img.image.url }}" alt="{{ img.caption }}">
+                {% if img.is_video %}
+                    <video playsinline muted loop controls preload="metadata" style="width:100%;height:auto;display:block;">
+                        <source src="{{ img.image.url }}" type="video/{% if img.image.url|lower|endswith:'.webm' %}webm{% elif img.image.url|lower|endswith:'.mov' %}quicktime{% else %}mp4{% endif %}">
+                    </video>
+                {% else %}
+                    <img src="{{ img.image.url }}" alt="{{ img.caption }}">
+                {% endif %}
                 <figcaption><strong>{{ img.caption }}</strong></figcaption>
             </figure>
             {% empty %}

@@ -253,6 +253,13 @@ body {
   width: auto;
   object-fit: cover;
 }
+
+.gallery-item video {
+  height: 600px; 
+  width: auto;
+  object-fit: cover;
+}
+
 .gallery-item figcaption {
   margin-top: 1rem;
   color: black;

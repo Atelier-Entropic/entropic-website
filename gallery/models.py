@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.validators import FileExtensionValidator
+import os
 
 class Project(models.Model):
     ORIENTATION_CHOICES = [
@@ -15,8 +17,6 @@ class Project(models.Model):
     LOCATION_CHOICES = [
         ('scandinavia', 'Scandinavia'),
         ('central-europe', 'Central Europe'),
-        ('baltic', 'Baltic Countries'),
-        ('eastern-europe', 'Eastern Europe'),
         ('middle-east', 'Middle East'),
     ]
 
@@ -26,7 +26,25 @@ class Project(models.Model):
     orientation = models.CharField(max_length=10, choices=ORIENTATION_CHOICES)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
     location = models.CharField(max_length=20, choices=LOCATION_CHOICES)
-    image_main = models.ImageField(upload_to='projects/')
+    image_main = models.FileField(
+        upload_to='projects/',
+        validators=[FileExtensionValidator(allowed_extensions=[
+            # images
+            'jpg','jpeg','png','webp','gif','svg',
+            # videos
+            'mp4','webm','mov'
+        ])]
+    )
+
+    def image_main_ext(self):
+        return os.path.splitext(self.image_main.name or "")[1].lower()
+
+    def image_main_is_video(self):
+        return self.image_main_ext() in {'.mp4', '.webm', '.mov'}
+
+    def image_main_is_image(self):
+        return self.image_main and not self.image_main_is_video()
+
     image_alt1 = models.ImageField(upload_to='projects/', blank=True, null=True)
     image_alt2 = models.ImageField(upload_to='projects/', blank=True, null=True)
 
@@ -67,7 +85,24 @@ class Project(models.Model):
 
 class ProjectGalleryImage(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='gallery_images')
-    image = models.ImageField(upload_to='projects/gallery/')
+    # was: ImageField(upload_to='projects/gallery/')
+    image = models.FileField(
+        upload_to='projects/gallery/',
+        validators=[FileExtensionValidator(allowed_extensions=[
+            'jpg','jpeg','png','webp','gif','svg','mp4','webm','mov'
+        ])]
+    )
+    # helpers
+    def ext(self):
+        import os
+        return os.path.splitext(self.image.name or "")[1].lower()
+
+    def is_video(self):
+        return self.ext() in {'.mp4', '.webm', '.mov'}
+
+    def is_image(self):
+        return self.image and not self.is_video()
+
     caption = models.CharField(max_length=255, blank=True)
 
     def __str__(self):

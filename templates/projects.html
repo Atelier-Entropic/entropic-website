@@ -106,9 +106,13 @@
           <div class="image-wrapper {{ project.orientation }}" data-project="{{ project.slug }}">
               <!-- Project main image -->
                 <a class="image-link" href="{% url 'project_detail' project.slug %}">
-                    {% if project.image_main %}
-                    <img src="{{ project.image_main.url }}" alt="{{ project.title }}">
-                    {% endif %}
+                        {% if project.image_main and project.image_main_is_video %}
+                            <video playsinline muted loop controls preload="metadata" style="width:100%;height:auto;display:block;">
+                                <source src="{{ project.image_main.url }}" type="video/{% if project.image_main.url|lower|endswith:'.webm' %}webm{% elif project.image_main.url|lower|endswith:'.mov' %}quicktime{% else %}mp4{% endif %}">
+                            </video>
+                        {% elif project.image_main and project.image_main_is_image %}
+                            <img src="{{ project.image_main.url }}" alt="{{ project.title }}">
+                        {% endif %}
                     <div class="overlay">
                         <div class="overlay-text">
                             <p class="project-title">{{ project.title }}</p>
