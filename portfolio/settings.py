@@ -53,6 +53,7 @@ INSTALLED_APPS = [
 # Middleware (WhiteNoise only in production)
 # ---------------------------
 MIDDLEWARE = [
+    "gallery.middleware.MediaCacheHeaders",  # ← add this at index 0
     "django.middleware.security.SecurityMiddleware",
     # WhiteNoise gets inserted below when not DEBUG
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -142,6 +143,8 @@ else:
 
 MEDIA_URL = "/images/"
 MEDIA_ROOT = os.environ.get("MEDIA_ROOT", str(BASE_DIR / "images"))
+MEDIA_CACHE_SECONDS = int(os.environ.get("MEDIA_CACHE_SECONDS", "31536000"))  # 1 year
+MEDIA_CACHE_IMMUTABLE = os.environ.get("MEDIA_CACHE_IMMUTABLE", "true").lower() == "true"
 
 # ---------------------------
 # Default primary key
