@@ -53,7 +53,7 @@ INSTALLED_APPS = [
 # Middleware (WhiteNoise only in production)
 # ---------------------------
 MIDDLEWARE = [
-    "gallery.middleware.MediaCacheHeaders",  # ← add this at index 0
+    "gallery.middleware.media_cache_headers"
     "django.middleware.security.SecurityMiddleware",
     # WhiteNoise gets inserted below when not DEBUG
     "django.contrib.sessions.middleware.SessionMiddleware",
