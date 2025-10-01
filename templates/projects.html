@@ -106,7 +106,9 @@
           <div class="image-wrapper {{ project.orientation }}" data-project="{{ project.slug }}">
               <!-- Project main image -->
                 <a class="image-link" href="{% url 'project_detail' project.slug %}">
+                    {% if project.image_main %}
                     <img src="{{ project.image_main.url }}" alt="{{ project.title }}">
+                    {% endif %}
                     <div class="overlay">
                         <div class="overlay-text">
                             <p class="project-title">{{ project.title }}</p>

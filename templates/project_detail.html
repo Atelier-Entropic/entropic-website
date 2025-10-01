@@ -75,7 +75,9 @@
     </div>
 
     <div class="fullscreen-slideshow">
+        {% if project.slideshow_1 %}
         <img src="{{ project.slideshow_1.url }}" alt="Slide 1">
+        {% endif %}
         {% if project.slideshow_2 %}
             <img src="{{ project.slideshow_2.url }}" alt="Slide 2">
         {% endif %}
