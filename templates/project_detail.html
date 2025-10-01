@@ -113,7 +113,7 @@
             <figure class="gallery-item">
                 {% if img.is_video %}
                     <video playsinline muted loop controls preload="metadata" style="width:100%;height:auto;display:block;">
-                        <source src="{{ img.image.url }}" type="video/{% if img.image.url|lower|endswith:'.webm' %}webm{% elif img.image.url|lower|endswith:'.mov' %}quicktime{% else %}mp4{% endif %}">
+                        <source src="{{ img.image.url }}">
                     </video>
                 {% else %}
                     <img src="{{ img.image.url }}" alt="{{ img.caption }}">

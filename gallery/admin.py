@@ -1,6 +1,8 @@
 from django.contrib import admin
 from adminsortable2.admin import SortableAdminMixin
 from .models import Project, ProjectGalleryImage
+from django import forms  # <-- REQUIRED
+
 
 class ProjectGalleryImageInline(admin.TabularInline):
     model = ProjectGalleryImage
