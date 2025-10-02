@@ -42,6 +42,7 @@ from django.forms.models import BaseInlineFormSet
 from django.core.exceptions import ValidationError
 
 class ResearchImageInlineFormSet(BaseInlineFormSet):
+
     def clean(self):
         super().clean()
         if getattr(self.instance, "article_layout", "") == "short":

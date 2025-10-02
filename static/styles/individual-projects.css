@@ -31,7 +31,7 @@ body {
 .project-name .intro {
   flex: 1 1 auto;
   min-width: 0;
-  text-align: justify;
+  
 }
 
 .project-name h1 {
@@ -47,7 +47,7 @@ body {
   margin-top: 5rem;
   line-height: 1.2;
   max-width: 50ch;
-
+  text-align: justify;
 }
 .project-name .img-aside {
   flex: 0 0 auto;

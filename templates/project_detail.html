@@ -112,7 +112,10 @@
             {% for img in project.gallery_images.all %}
             <figure class="gallery-item">
                 {% if img.is_video %}
-                    <video playsinline muted loop controls preload="metadata">
+                    <video  class="hover-controls"
+                            autoplay muted loop playsinline preload="metadata"
+                            disablepictureinpicture
+                            controlslist="nodownload noplaybackrate noremoteplayback">
                         <source src="{{ img.image.url }}">
                     </video>
                 {% else %}
@@ -181,6 +184,7 @@
     </div>    
 
     <script src="{% static 'scripts/header-toggle.js' %}" defer></script>
+     <script src="{% static 'scripts/video-play-controls.js' %}"></script>
     <script src="{% static 'scripts/projects/slideshow.js' %}"></script>
     <script>
         // 1. Declare first
