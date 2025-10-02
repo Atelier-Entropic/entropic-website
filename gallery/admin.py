@@ -23,8 +23,7 @@ class ProjectAdmin(SortableAdminMixin,admin.ModelAdmin):
         }),
         ("Project Page Info", {
             "fields": (
-                "intro_text", 
-                "intro_image",
+                "intro_text",
                 "slideshow_1", "slideshow_2", "slideshow_3",
                 "description", "program", "size", "country", "client", 'collaborators', "team", "year",
             ),
