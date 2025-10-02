@@ -185,7 +185,6 @@ body {
 /*!RESPONSIVE — GALLERY & OVERLAY*/
 @media (max-width: 1200px) {
   .projects-gallery { column-count: 3; }
-  .project-title { font-size: 1rem; margin: 0 0 0.5rem 0; }
   .project-desc { font-size: 0.8rem; }
 }
 
@@ -195,10 +194,12 @@ body {
 
 @media (max-width: 768px) {
   .projects-gallery {
+    column-count: 2;
     column-gap: 0.5rem;
     padding-left: 1rem;
     padding-right: 1rem;
   }
+  
   .project { margin-bottom: 0.5rem; }
   .image-wrapper.vertical::before   { height: calc(190vh/3 - 0.25rem); }
   .image-wrapper.horizontal::before { height: calc((190vh/3 - 0.25rem)/2 - 0.25rem); }
@@ -220,6 +221,7 @@ body {
     column-gap: 0.5rem;
     padding: 0;
   }
+  .project-title { font-size: 1rem; margin: 0 0 0.5rem 0; }
 }
 
 /*!RESPONSIVE — TEXT BLOCKS*/
