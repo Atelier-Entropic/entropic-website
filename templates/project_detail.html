@@ -112,7 +112,7 @@
             {% for img in project.gallery_images.all %}
             <figure class="gallery-item">
                 {% if img.is_video %}
-                    <video playsinline muted loop controls preload="metadata" style="width:100%;height:auto;display:block;">
+                    <video playsinline muted loop controls preload="metadata">
                         <source src="{{ img.image.url }}">
                     </video>
                 {% else %}
