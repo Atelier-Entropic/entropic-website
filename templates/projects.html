@@ -105,7 +105,13 @@
               <!-- Project main image -->
                 <a class="image-link" href="{% url 'project_detail' project.slug %}">
                     {% if project.image_main and project.image_main_is_video %}
-                        <video playsinline muted loop controls preload="metadata" style="width:100%;height:auto;display:block;">
+                        <video  autoplay
+                                muted
+                                loop
+                                playsinline
+                                preload="metadata"
+                                disablepictureinpicture
+                                controlslist="nodownload noplaybackrate noremoteplayback nofullscreen">
                             {# keep it simple: most are mp4; browser will figure it out without type #}
                             <source src="{{ project.image_main.url }}">
                         </video>

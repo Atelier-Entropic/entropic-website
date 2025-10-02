@@ -40,6 +40,7 @@ body {
   line-height: 0.75;
   margin-bottom: 2rem;
   margin-top: 8rem;
+  max-width: 12ch;
 
 }
 .project-name h4 {
