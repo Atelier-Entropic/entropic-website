@@ -1,49 +1,57 @@
-// Slider + overlay logic for Django dynamic gallery
 document.addEventListener("DOMContentLoaded", () => {
-  // Find all project wrappers
   document.querySelectorAll(".image-wrapper").forEach(wrapper => {
-    const mainImg = wrapper.querySelector("img");              // The visible image
-    const linkEl = wrapper.querySelector(".image-link");       // Clickable link to project
+    const linkEl   = wrapper.querySelector(".image-link");
+    const overlay  = wrapper.querySelector(".overlay");
+    const imgInLink = wrapper.querySelector("a.image-link img");
 
-    // Collect all image sources: first the main one, then all hidden slides
-    const images = [
-      mainImg.src,
-      ...Array.from(wrapper.querySelectorAll(".hidden-slide")).map(img => img.src)
-    ];
+    // Slider setup (only if it's an image card)
+    if (imgInLink) {
+      const images = [
+        imgInLink.src,
+        ...Array.from(wrapper.querySelectorAll(".hidden-slide")).map(img => img.src)
+      ];
+      let currentIndex = 0;
+      const leftArrow  = wrapper.querySelector(".arrow.left");
+      const rightArrow = wrapper.querySelector(".arrow.right");
 
-    // Only activate slider if we have more than 1 image
-    if (images.length <= 1) return;
+      const show = (i) => { imgInLink.src = images[i]; };
 
-    let currentIndex = 0;
+      if (leftArrow) {
+        leftArrow.addEventListener("click", (e) => {
+          e.preventDefault(); e.stopPropagation();
+          if (images.length > 1) {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            show(currentIndex);
+          }
+        });
+      }
 
-    // LEFT arrow
-    const leftArrow = wrapper.querySelector(".arrow.left");
-    if (leftArrow) {
-      leftArrow.addEventListener("click", e => {
-        e.preventDefault();
-        e.stopPropagation();
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        mainImg.src = images[currentIndex];
-      });
+      if (rightArrow) {
+        rightArrow.addEventListener("click", (e) => {
+          e.preventDefault(); e.stopPropagation();
+          if (images.length > 1) {
+            currentIndex = (currentIndex + 1) % images.length;
+            show(currentIndex);
+          }
+        });
+      }
     }
 
-    // RIGHT arrow
-    const rightArrow = wrapper.querySelector(".arrow.right");
-    if (rightArrow) {
-      rightArrow.addEventListener("click", e => {
-        e.preventDefault();
-        e.stopPropagation();
-        currentIndex = (currentIndex + 1) % images.length;
-        mainImg.src = images[currentIndex];
+    // Make the overlay itself navigate to the project page…
+    if (overlay && linkEl) {
+      overlay.addEventListener("click", (e) => {
+        // …except when clicking on the arrows area
+        if (e.target.closest(".overlay-arrows")) return;
+        window.location.href = linkEl.href;
       });
-    }
-
-    // Clicking the main image still navigates to the project page
-    if (linkEl) {
-      linkEl.addEventListener("click", e => {
-        // Default behavior: follow link
+      // accessibility: Enter/Space activates overlay
+      overlay.setAttribute("tabindex", "0");
+      overlay.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          window.location.href = linkEl.href;
+        }
       });
     }
   });
 });
-

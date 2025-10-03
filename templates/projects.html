@@ -118,18 +118,19 @@
                     {% elif project.image_main and project.image_main_is_image %}
                         <img src="{{ project.image_main.url }}" alt="{{ project.title }}">
                     {% endif %}
-                    <div class="overlay">
-                        <div class="overlay-text">
-                            <p class="project-title">{{ project.title }}</p>
-                            <p class="project-desc">{{ project.short_description }}</p>
-                        </div>
-                        <div class="overlay-arrows">
-                            <span class="arrow left">⟵</span>
-                            <span class="arrow right">⟶</span>
-                        </div>
-                    </div>
+
                 </a>
-              <!-- Arrows for slider -->
+
+                <div class="overlay">
+                    <div class="overlay-text">
+                        <p class="project-title">{{ project.title }}</p>
+                        <p class="project-desc">{{ project.short_description }}</p>
+                    </div>
+                    <div class="overlay-arrows">
+                        <span class="arrow left">⟵</span>
+                        <span class="arrow right">⟶</span>
+                    </div>
+                </div>              
 
               <!-- Hidden slider images -->
               {% if project.image_alt1 %}

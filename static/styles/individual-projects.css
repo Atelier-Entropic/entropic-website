@@ -102,7 +102,7 @@ body {
 @media (max-width: 400px) { 
 
     .project-name h1 {
-      font-size: 5rem;
+      font-size: 4rem;
     }
 
     .project-name h4 {
@@ -271,7 +271,10 @@ body {
   .gallery-item img {
   height: 300px; 
   width: auto;
-  object-fit: cover;} 
+  object-fit: cover;}
+
+  .gallery-item video {
+  height: 300px; }
 }
 
 /** Custom Scrollbar */

@@ -119,7 +119,13 @@ body {
   height: 100%;
   box-sizing: border-box;
   z-index: 2; /* above image */
+  pointer-events: auto;
+  cursor: pointer;    
 }
+
+/* arrows still clickable, nothing special needed */
+.overlay-arrows, .overlay-arrows .arrow { pointer-events: auto; }
+
 .image-wrapper:hover .overlay { opacity: 1; }
 
 .overlay-text { margin-top: auto; }
