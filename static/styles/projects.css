@@ -227,7 +227,7 @@ body {
     column-gap: 0.5rem;
     padding: 0;
   }
-  .project-title { font-size: 1rem; margin: 0 0 0.5rem 0; }
+  .project-title { font-size: 2rem; margin: 0 0 0.5rem 0; }
 }
 
 /*!RESPONSIVE — TEXT BLOCKS*/
