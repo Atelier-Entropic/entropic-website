@@ -255,8 +255,20 @@ p  { font-size: 1rem; }
 .service.active::after {
   display: none;
 }
+.additional-cta {display: flex;
+  justify-content: space-between;
+padding: 15rem 2.5rem 8rem 2.5rem;}
+
+.additional-cta .cta-button {
+  line-height: 2;
+  text-decoration: none;
+}
+
 .additional-text h4{
-  padding: 2rem 2rem;
+  font-family:'Halyard-Display', sans-serif;
+  font-size: 2rem;
+  padding-left: 2rem;
+  max-width: 55ch;
 }
 
 /*!SERVICES ADJUSTMENTS FOR SCREENS**/
@@ -285,6 +297,11 @@ p  { font-size: 1rem; }
   .service.active .overlay h3 {
     font-size: 2.2rem;
   }
+
+  .additional-text h4{
+  font-size: 1.6rem;
+  max-width: 45ch;
+}
 }
 
 @media (max-width: 900px) {
@@ -293,8 +310,14 @@ p  { font-size: 1rem; }
   padding: 0.25rem 1rem;
   }
 
+  .additional-cta {
+    padding: 5rem 1rem;
+
+  }
+
     .additional-text h4{
-  padding: 2rem 1rem;
+  font-size: 1.2rem;
+  max-width: 40ch;
   }
 
 
@@ -329,15 +352,28 @@ p  { font-size: 1rem; }
     left: 0.5rem;
   }
 }
+@media (max-width: 650px) {
+    .additional-cta {flex-direction:column ; padding: 3rem; margin-top: 3rem;}
+    .additional-cta .cta-button {margin-bottom: 3rem;}
+    .additional-text h4{padding: 0;}
+
+}
 @media (max-width: 450px) {
   .services-section {
   padding: 0;
   }
+
+  .additional-cta {flex-direction:column ; padding: 2rem;}
+  .additional-cta .cta-button {margin-bottom: 2rem; font-size: 0.5rem;}
+  .additional-text h4{font-size: 0.8rem;}
+
   .services-section h2 {
     font-weight: 400;
     padding-left: 1rem;
     margin: 0;
   }
+
+
   .services-section h2 span{
     margin: 0;
     margin-top: 2rem;
