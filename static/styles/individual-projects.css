@@ -3,7 +3,7 @@
 /*!OVERALL OVERRIDES**/
 body {
     background: white;
-    overflow-x: none;
+    overflow-x: hidden;
 }
 .static-footer {
   display: block;

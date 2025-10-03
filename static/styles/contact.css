@@ -60,7 +60,11 @@ body{
   }
 }
 @media (max-width: 768px) {
-  .container {padding: 0 1rem;}
+  .container {padding: 0 1rem;
+  margin-top: 8rem;}
+    .contact-title{
+    margin: 5rem 0;
+  }
 }
 @media (max-width: 450px) {
 
@@ -96,6 +100,7 @@ body{
 @media (max-width: 720px) {
   .info {
     grid-template-columns: 1fr;
+     gap: 4rem;
   }
 }
 
@@ -226,8 +231,8 @@ body{
 /* Full-width, bottom-pinned button */
 .form .btn{
   border: 1.5px solid white;
-  background: #111111;
-  color: white;
+  background: white;
+  color: black;
   position: absolute;
   left: 0;
   right: 0;
@@ -245,8 +250,8 @@ body{
 }
 
 .btn:hover {
-  background: white;
-  color: black;
+  background: black;
+  color: white;
 }
 
 /* slide-in keyframes */

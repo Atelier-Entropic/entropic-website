@@ -177,7 +177,7 @@ p  { font-size: 1rem; }
 .services-section h2 {
   font-weight: 500;
   font-size: clamp(4rem,17vw,15rem);
-  margin: 2rem 0 0 0;
+  margin: 10rem 0 0 0;
 }
 .services-section h2 span{
   line-height: 0.8;      
@@ -257,9 +257,15 @@ p  { font-size: 1rem; }
 }
 .additional-cta {display: flex;
   justify-content: space-between;
-padding: 15rem 2.5rem 8rem 2.5rem;}
+  padding: 2rem 2rem 7rem 2rem;}
 
+.additional-cta .additional-block {box-sizing: border-box;
+  display:flex;
+  justify-content: space-between;
+  align-content: space-between;
+  flex-direction:column;}
 .additional-cta .cta-button {
+  margin-top: auto;
   line-height: 2;
   text-decoration: none;
 }
@@ -269,6 +275,8 @@ padding: 15rem 2.5rem 8rem 2.5rem;}
   font-size: 2rem;
   padding-left: 2rem;
   max-width: 55ch;
+  text-align: justify;
+  line-height: 1.1;
 }
 
 /*!SERVICES ADJUSTMENTS FOR SCREENS**/
@@ -353,7 +361,7 @@ padding: 15rem 2.5rem 8rem 2.5rem;}
   }
 }
 @media (max-width: 650px) {
-    .additional-cta {flex-direction:column ; padding: 3rem; margin-top: 3rem;}
+    .additional-cta {flex-direction:column ; padding:4rem 1rem; margin-top: 1rem;}
     .additional-cta .cta-button {margin-bottom: 3rem;}
     .additional-text h4{padding: 0;}
 
@@ -363,7 +371,7 @@ padding: 15rem 2.5rem 8rem 2.5rem;}
   padding: 0;
   }
 
-  .additional-cta {flex-direction:column ; padding: 2rem;}
+  .additional-cta {flex-direction:column ; padding: 1rem 1rem 3rem 8rem;}
   .additional-cta .cta-button {margin-bottom: 2rem; font-size: 0.5rem;}
   .additional-text h4{font-size: 0.8rem;}
 
@@ -371,6 +379,7 @@ padding: 15rem 2.5rem 8rem 2.5rem;}
     font-weight: 400;
     padding-left: 1rem;
     margin: 0;
+    margin-top: 5rem;
   }
 
 
