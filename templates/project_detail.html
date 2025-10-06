@@ -184,36 +184,56 @@
     </div>    
 
     <script src="{% static 'scripts/header-toggle.js' %}" defer></script>
-     <script src="{% static 'scripts/video-play-controls.js' %}"></script>
+    <script src="{% static 'scripts/video-play-controls.js' %}"></script>
     <script src="{% static 'scripts/projects/slideshow.js' %}"></script>
     <script>
-        // 1. Declare first
         const relatedProjects = [
             {% for p in related_projects %}
             {
-                title: "{{ p.title|escapejs }}",
-                image: "{{ p.image_main.url }}",
-                url: "{% url 'project_detail' slug=p.slug %}",
-                category: "{{ p.category|lower }}"
+            title: "{{ p.title|escapejs }}",
+            mediaUrl: {% if p.image_main %}"{{ p.image_main.url }}"{% else %}null{% endif %},
+            isVideo: {% if p.image_main %}{{ p.image_main_is_video|yesno:"true,false" }}{% else %}false{% endif %},
+            url: "{% url 'project_detail' slug=p.slug %}",
+            category: "{{ p.category|lower }}"
             }{% if not forloop.last %},{% endif %}
             {% endfor %}
         ];
 
-        // 2. Use after declaration
-        console.log("DEBUG relatedProjects:", relatedProjects);
-
         const relatedContainer = document.querySelector(".related-projects-container");
-        relatedProjects.forEach(project => {
+
+        function renderRelatedProjects(items) {
+            if (!relatedContainer) return;
+            relatedContainer.innerHTML = "";
+
+            items.forEach(project => {
+            if (!project.mediaUrl) return;
+
             const div = document.createElement("div");
             div.className = "related-project";
+
+            const media = project.isVideo
+                ? `<video class="hover-controls"
+                        autoplay muted loop playsinline preload="metadata"
+                        disablepictureinpicture
+                        controlslist="nodownload noplaybackrate noremoteplayback nofullscreen"
+                        style="width:100%;height:auto;display:block;object-fit:cover;">
+                    <source src="${project.mediaUrl}">
+                </video>`
+                : `<img src="${project.mediaUrl}" alt="${project.title}">`;
+
             div.innerHTML = `
                 <a href="${project.url}">
-                    <img src="${project.image}" alt="${project.title}">
-                    <p>${project.title}</p>
+                ${media}
+                <p>${project.title}</p>
                 </a>
             `;
             relatedContainer.appendChild(div);
-        });
+            });
+
+        }
+
+        // initial render
+        renderRelatedProjects(relatedProjects);
     </script>
 
     <script>

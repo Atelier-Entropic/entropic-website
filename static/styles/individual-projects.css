@@ -312,9 +312,7 @@ body {
   min-width: 280px;
   text-align: left;
 }
-.related-project img {
-  width: 100%;
-}
+
 .related-project p,.related-project a {
   text-decoration: none;
   margin-top: 10px;
@@ -330,6 +328,15 @@ body {
   object-fit: cover;
   display: block;
 }
+
+.horizontal-gallery video,
+.related-projects-container video {
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  display: block;
+}
+
 
 /*!ANIMATIONS**/
 .fade-in {
