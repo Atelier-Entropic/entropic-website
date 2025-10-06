@@ -3,7 +3,7 @@
 /*!OVERALL OVERRIDES**/
 body {
     background: white;
-    overflow-x: hidden;
+    overflow-x: hidden !important; 
 }
 .static-footer {
   display: block;
@@ -242,7 +242,7 @@ body {
 .gallery-track {
   display: flex;
   gap: 1rem;
-  padding: 0 1rem;
+  padding: 0 0 0 1rem;
 }
 .gallery-item {
   flex: 0 0 auto;
@@ -329,7 +329,6 @@ body {
   display: block;
 }
 
-.horizontal-gallery video,
 .related-projects-container video {
   width: 100%;
   aspect-ratio: 3/2;
