@@ -245,8 +245,8 @@ flex-direction: column;
   margin-bottom: 4rem;
 }
 .block-c__item img{
-  width: auto;
-  height: 100%;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   display: block;
 }
@@ -263,7 +263,6 @@ flex-direction: column;
   grid-column: 1;
   justify-self: start;              
   width: 100%;
-  
 }
 
 @media (max-width: 1300px) {
