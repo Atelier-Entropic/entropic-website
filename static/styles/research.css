@@ -43,7 +43,7 @@ body{
   padding:1rem;
   background-color: white;
   /* border-right:1.5px solid #000; */
-  margin-left: 1rem;
+  margin-left: 2rem;
   border-radius: 22px;
 }
 
@@ -245,8 +245,8 @@ flex-direction: column;
   margin-bottom: 4rem;
 }
 .block-c__item img{
-  width: 100%;
-  aspect-ratio: 3 / 2;
+  width: auto;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
@@ -263,6 +263,7 @@ flex-direction: column;
   grid-column: 1;
   justify-self: start;              
   width: 100%;
+  
 }
 
 @media (max-width: 1300px) {

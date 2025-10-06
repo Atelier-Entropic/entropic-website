@@ -30,6 +30,7 @@ p  { font-size: 1rem; }
 }
 .about-columns h4 {
   max-width: 40ch;
+  text-align: justify;
 }
 .about-decor {
   width: 2rem;
@@ -362,7 +363,7 @@ p  { font-size: 1rem; }
 }
 @media (max-width: 650px) {
     .additional-cta {flex-direction:column ; padding:4rem 1rem; margin-top: 1rem;}
-    .additional-cta .cta-button {margin-bottom: 3rem;}
+    .additional-cta .cta-button {display: none;}
     .additional-text h4{padding: 0;}
 
 }
@@ -371,9 +372,9 @@ p  { font-size: 1rem; }
   padding: 0;
   }
 
-  .additional-cta {flex-direction:column ; padding: 1rem 1rem 3rem 8rem;}
+  .additional-cta {flex-direction:column ; padding: 1rem 6rem 3rem 1rem;}
   .additional-cta .cta-button {margin-bottom: 2rem; font-size: 0.5rem;}
-  .additional-text h4{font-size: 0.8rem;}
+  .additional-text h4{font-size: 1rem; line-height: 1;}
 
   .services-section h2 {
     font-weight: 400;
@@ -509,6 +510,7 @@ p  { font-size: 1rem; }
   padding: 4rem 2rem;
 }
 .awards-section h2 {
+  
   margin-bottom: 3rem;
 }
 /* .awards-content {
@@ -552,6 +554,7 @@ p  { font-size: 1rem; }
   flex: 1;
   padding-left: 60% ;
   color: #333;
+  text-align: justify;
 }
 .awards-text p {
   padding-top: 2rem;
