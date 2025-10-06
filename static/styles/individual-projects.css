@@ -337,6 +337,18 @@ body {
   display: block;
 }
 
+@media (max-width: 630px) {
+  .related-projects {
+  padding: 50px 1rem;
+}
+  .related-projects-container {
+  gap: 24px;
+}
+  .related-project {
+  width: 50%;
+}
+}
+
 
 /*!ANIMATIONS**/
 .fade-in {
