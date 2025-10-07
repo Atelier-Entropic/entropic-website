@@ -48,9 +48,9 @@ body{
 }
 
 /**CUSTOM SCROLL ASIDE**/
-.research-sidebar::-webkit-scrollbar{ width:6px; }
+.research-sidebar::-webkit-scrollbar{ width:0.6rem; }
 .research-sidebar::-webkit-scrollbar-track{ background:transparent; }
-.research-sidebar::-webkit-scrollbar-thumb{ background:#000; border-radius:0; border:none; }
+.research-sidebar::-webkit-scrollbar-thumb{ background:#000; border-radius:99px; border:none; padding: 0.1rem;}
 .research-sidebar::-webkit-scrollbar-thumb:hover{ background:#888; }
 
 /**LIST STYLE ASIDE**/
