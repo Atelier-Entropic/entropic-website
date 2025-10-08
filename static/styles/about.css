@@ -316,6 +316,7 @@ p  { font-size: 1rem; }
 @media (max-width: 900px) {
 
     .services-section {
+      
   padding: 0.25rem 1rem;
   }
 
@@ -335,6 +336,7 @@ p  { font-size: 1rem; }
   }
 
   .services {
+    
     flex-direction: column;
     height: auto;
   }
@@ -362,9 +364,10 @@ p  { font-size: 1rem; }
   }
 }
 @media (max-width: 650px) {
-    .additional-cta {flex-direction:column ; padding:4rem 1rem; margin-top: 1rem;}
+    .additional-cta {flex-direction:column ; padding:3rem 0.5rem; margin-top: 2rem;}
     .additional-cta .cta-button {display: none;}
-    .additional-text h4{padding: 0;}
+    .additional-text h4{text-indent: 2rem;
+      padding: 0;}
 
 }
 @media (max-width: 450px) {
@@ -372,9 +375,10 @@ p  { font-size: 1rem; }
   padding: 0;
   }
 
-  .additional-cta {flex-direction:column ; padding: 1rem 6rem 3rem 1rem;}
+  .additional-cta {flex-direction:column ; padding: 1rem 1rem 3rem 1rem;}
   .additional-cta .cta-button {margin-bottom: 2rem; font-size: 0.5rem;}
-  .additional-text h4{font-size: 1rem; line-height: 1;}
+  .additional-text h4{
+    font-size: 1.2rem; line-height: 1;}
 
   .services-section h2 {
     font-weight: 400;
@@ -501,109 +505,183 @@ p  { font-size: 1rem; }
   }
 }
 
-
-/*TODO: Edit logos*/
 /*!AWARDS**/
 .awards-section {
-  margin-top: 3rem;
-  background-color: white;
+  margin: 10rem 0 0 0;
+  background: #f9f9f9;
   padding: 4rem 2rem;
 }
-.awards-section h2 {
-  
-  margin-bottom: 3rem;
+.awards-section h2 { margin-bottom: 1.5rem; }
+
+
+
+.awards-text {
+  display: none;
+  color: #111;
+  margin: 5rem 0 2rem 0;
+  padding: 0 0.5rem;
+  font-family:'Halyard-Display', sans-serif;
+  text-align: justify;
+  line-height: 1.1;
+  font-size: 1.2rem;
+  text-indent: 2rem;
 }
-/* .awards-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 4rem;
-  flex-wrap: wrap;
-} */
+.awards-text p { margin: 0; }
+
 .awards-logos {
+  margin-top: 4rem;
+  display: grid;
+  --gap: 1rem;
+  gap: var(--gap);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.award-tile {
+  position: relative;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  display: block;
+  border-radius: 0;
+  overflow: hidden;
+  user-select: none;
+}
+
+.bg-white { background: #ffffff; }
+.bg-gray { background: #111; }
+.bg-gray-dark { background: #e7e7e7; }
+
+.span-2x1 {
+  grid-column: span 2;
+  aspect-ratio: calc(2 + var(--gap)) / 1;
+}
+
+.award-tile.is-text {
   display: flex;
-  gap: 6rem;
-  flex-wrap: nowrap; /* Prevents wrapping */
+  align-items: center;
   justify-content: center;
-  align-items: center; /* Aligns items vertically */
+  text-align: center;
+  padding: 1rem;
+}
+.award-tile.is-text p {
+  margin: 0;
+  font-family: 'Fustat', system-ui, sans-serif;
+  color: #111;
+}
+
+.award-tile.is-image img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
-.award-logo {
-  flex: 1 1 auto; /* Ensures the logo scales responsively */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+@media (hover:hover) and (pointer:fine) {
+  .award-tile.is-image img {
+    filter: grayscale(100%);
+    transition: filter 240ms ease;
+  }
+  .award-tile.is-image:hover img { filter: none; }
 }
 
-.award-logo img {
-  max-width: 100%;
-  height: 180px; /* Makes the height scale proportionally */
-  width: 100%; /* Ensures the image scales with the container */
-  object-fit: contain; /* Maintains aspect ratio */
+.award-tile.is-flip { perspective: 1000px; }
+.award-tile.is-flip .tile-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 360ms cubic-bezier(.2,.7,.2,1);
+}
+.award-tile.is-flip.is-active .tile-inner { transform: rotateY(180deg); }
+
+.tile-face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  backface-visibility: hidden;
+  padding: 1rem;
+}
+.tile-front {
+  background: transparent;
+  color: #fff;
+  font-family: 'Halyard-Display', sans-serif;
+  text-align: center;
+}
+
+/* Flip hint arrow */
+.award-tile.is-flip .tile-front::after {
+  content: "↻";
+  position: absolute;
+  right: 0.75rem;
+  top: 0.75rem;
+  font-size: clamp(0.9rem, 1vw, 1.1rem);
+  line-height: 1;
+  color: currentColor;   /* inherits the front text color (#fff) */
+  pointer-events: none;
+}
+
+/* Hover polish for pointer devices */
+@media (hover:hover) and (pointer:fine) {
+  .award-tile.is-flip:hover .tile-front::after {
+    transform: rotate(180deg);
+    transition: transform 240ms ease;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .award-tile.is-flip:hover .tile-front::after {
+    transition: none;
+    transform: none;
+  }
+}
+
+.tile-back {
+  transform: rotateY(180deg);
+  background: transparent;
+}
+.tile-back img {
+  max-width: 70%;
+  max-height: 70%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
   filter: grayscale(100%);
-  transition: filter 0.3s ease;
-}
-.award-logo img:hover {
-  filter: grayscale(0%);
-}
-.awards-text {
-  transform: translateY(-6rem);
-  flex: 1;
-  padding-left: 60% ;
-  color: #333;
-  text-align: justify;
-}
-.awards-text p {
-  padding-top: 2rem;
 }
 
-@media (max-width: 1300px) {
-  .awards-logos {
-    gap: 2rem;
-  }
-  
-  .awards-text {
-  transform: translateY(0);
-  flex: 1;
-  padding-left: 0;
-  margin-bottom: 6rem;
-  max-width: 80ch;
-  color: #333;
-  }
+.award-name {
+  display: inline-block;
+  font-family: 'Halyard-Display', sans-serif;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 1.8vw, 3rem);
+  line-height: 1.15;
+  text-align: center;
 }
 
-@media (max-width: 900px) {
-  .awards-section {
-    padding: 4rem 1rem;
-  }
+/* ===================== MEDIA QUERIES ===================== */
+
+@media (max-width: 1200px) {
+  .awards-logos { --gap: 0.5rem; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .award-tile.is-empty { display: none; }
+  .hide-tablet { display: none !important; }
 }
 
 @media (max-width: 768px) {
-  .awards-logos {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    gap: 4rem; /* Adjust the gap between logos for grid */
-    justify-items: center; /* Center the logos within their grid cells */
-    width: 100%;
-    height: auto; /* Adjust height if needed */
-  }
+  .awards-section { padding: 4rem 1rem; margin: 4rem 0 0 0; }
+  .awards-logos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .award-tile.is-text { display: none; }
+  .award-tile.is-image { display: none; }
+  .span-2x1 { grid-column: span 1; aspect-ratio: 1 / 1; }
+  .hide-mobile { display: none !important; }
+  .awards-text {display:block;}
+}
 
-  .award-logo {
-    flex: 0 0 auto; /* Remove flex scaling in grid layout */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
+@media (hover:none) {
+  .award-tile.is-image img { filter: none; }
+}
 
-  .award-logo img {
-    max-width: 100%;
-    max-height: 100px; /* Maintain aspect ratio */
-    object-fit: contain; /* Keep the images in their original aspect ratio */
-  }
+@media (prefers-reduced-motion: reduce) {
+  .award-tile.is-flip .tile-inner { transition: none; }
 }
 
 
@@ -617,6 +695,7 @@ p  { font-size: 1rem; }
   padding: 2rem 2rem;
   gap: 2rem;
   flex-wrap: wrap;
+  background-color: #f9f9f9;
 }
 .cta-left h2  {
   font-weight: 500;

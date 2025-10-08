@@ -116,7 +116,7 @@
             <div clas="additional-block">
                 <p class="cta-button">Our Aptitudes </p>
             </div>
-            <div class="additional-text"><h4>Our strength lies in connecting disciplines—urbanism, architecture, landscape, infrastructure, and interiors—into one seamless practice. This multidisciplinary approach allows us to see projects as whole systems, where each layer informs and strengthens the other. By dissolving boundaries between scales and fields, we unlock solutions that are more resilient, more sustainable, and more meaningful. It is through this integrated lens that we add value: creating projects that are not only functional and beautiful, but also adaptive to the complexity of contemporary life.</h4></div>
+            <div class="additional-text"><h4>Our strength lies in connecting disciplines—urbanism, architecture, landscape, infrastructure, and interiors—into one seamless practice. This multidisciplinary approach allows us to see projects as whole systems, where each layer informs and strengthens the other. <br>By dissolving boundaries between scales and fields, we unlock solutions that are more resilient, more sustainable, and more meaningful. It is through this integrated lens that we add value: creating projects that are not only functional and beautiful, but also adaptive to the complexity of contemporary life.</h4></div>
         </div>
         <div class="services">
             <div class="service active" style="--bg: url('{% static "images/about/urbanism.webp" %}');
@@ -204,17 +204,125 @@
 
     <section class="awards-section">
         <h2>Recognition:</h2>
-        <div class="awards-content">
-            <div class="awards-text">
-                <p> We’re advancing initiatives to make sustainability a reality. Recently securing the <strong>New European Bauhaus Award</strong> for our innovation start-up, we’re focusing on concepts aligned with the <strong>UN Sustainable Development Goals</strong>. Our focus is on preserving local ecology and applying new technologies for carbon capture. We believe wooden construction is a promising, environmentally advanced method. As recipients of the <strong>“Europe 40 Under 40”</strong> award, we’re part of a new generation of architects pushing bold ideas.
+        
+        <div class="awards-text">
+            We’re advancing initiatives to make sustainability a reality. Recently securing the New European Bauhaus Award for our innovation start-up, we’re focusing on concepts aligned with the UN Sustainable Development Goals. <br>Our focus is on preserving local ecology and applying new technologies for carbon capture. We believe wooden construction is a promising, environmentally advanced method. As recipients of the “Europe 40 Under 40” award, we’re part of a new generation of architects pushing bold ideas.
+        </div>
+
+        <!-- GRID -->
+        <div class="awards-logos" id="recognition-grid">
+
+            <!-- Text tile (can span two squares on desktop) -->
+            <div class="award-tile is-text bg-white span-2x1">
+                <p>
+                    Our focus is on preserving local ecology and applying new technologies for carbon capture. We believe wooden construction is a promising, environmentally advanced method.
                 </p>
             </div>
-            <div class="awards-logos">
-                <div class="award-logo"><img src="{% static 'images/about/awards/new_european_bauhaus.png' %}" alt="Award 1"></div>
-                <div class="award-logo"><img src="{% static 'images/about/awards/40.png' %}" alt="Award 2"></div>
-                <div class="award-logo"><img src="{% static 'images/about/awards/2025-APLUS-WINNER-WHT.png' %}" alt="Award 3"></div>
-                <div class="award-logo"><img src="{% static 'images/about/awards/climate-kic-logo.png' %}" alt="Award 4"></div>
+
+            <div class="award-tile is-image bg-white">
+                <img src="{% static 'images/about/neb.jpg' %}" alt="Project image placeholder">
             </div>
+
+            <div class="award-tile is-empty bg-gray-dark" aria-hidden="true"></div>
+
+            <div class="award-tile is-text bg-white">
+                <p>
+                    We’re advancing initiatives to make sustainability a reality. 
+                </p>
+            </div>
+
+            <!-- Another flip card -->
+            <div class="award-tile is-flip bg-gray" data-award="a-plus">
+                <div class="tile-inner">
+                    <div class="tile-face tile-front">
+                        <span class="award-name">Architizer A+Awards</span>
+                    </div>
+                    <div class="tile-face tile-back">
+                        <img src="{% static 'images/about/awards/2025-APLUS-WINNER-WHT.png' %}" alt="Architizer A+Awards — award logo">
+                    </div>
+                </div>
+            </div>
+
+            <div class="award-tile is-image bg-white">
+                <img src="{% static 'images/about/the-nature-gate-slideshow-3.webp' %}" alt="Project image placeholder">
+            </div>
+
+            <div class="award-tile is-empty bg-gray-dark" aria-hidden="true"></div>
+
+            <div class="award-tile is-image bg-white">
+                <img src="{% static 'images/about/40-under-40.jpg' %}" alt="Project image placeholder">
+            </div>
+            <div class="award-tile is-flip bg-gray" data-award="neb">
+                <div class="tile-inner">
+                    <div class="tile-face tile-front">
+                        <span class="award-name">New European Bauhaus</span>
+                    </div>
+                    <div class="tile-face tile-back">
+                        <img src="{% static 'images/about/awards/new_european_bauhaus.png' %}"
+                        alt="New European Bauhaus — award logo">
+                    </div>
+                </div>
+            </div>
+
+            <div class="award-tile is-text bg-white span-2x1">
+                <p>
+                    Recently securing the <strong>New European Bauhaus Award</strong>, we’re aligning with the
+                    <strong>UN SDGs</strong> and exploring timber construction and carbon capture strategies.
+                </p>
+            </div>            
+
+            <div class="award-tile is-image bg-white hide-tablet">
+                <img src="{% static 'images/about/40-under-40-2.jpg' %}" alt="Project image placeholder">
+            </div>
+
+            
+
+
+
+
+
+
+            <!-- Empty tile (for rhythm) -->
+            <div class="award-tile is-empty bg-gray-dark" aria-hidden="true"></div>
+
+            <div class="award-tile is-flip bg-gray" data-award="40u40">
+                <div class="tile-inner">
+                    <div class="tile-face tile-front">
+                        <span class="award-name">Europe 40 Under 40</span>
+                    </div>
+                    <div class="tile-face tile-back">
+                        <img src="{% static 'images/about/awards/40.png' %}" alt="Europe 40 Under 40 — award logo">
+                    </div>
+                </div>
+            </div>
+
+            <div class="award-tile is-text bg-white span-2x1">
+                <p>
+                    As recipients of the “Europe 40 Under 40” award, we’re part of a new generation of architects pushing bold ideas.
+                </p>
+            </div>
+
+            <div class="award-tile is-image bg-white hide-tablet">
+                <img src="{% static 'images/about/uek.png' %}" alt="Project image placeholder">
+            </div>
+
+            <div class="award-tile is-empty bg-gray-dark" aria-hidden="true"></div>
+
+            <div class="award-tile is-image bg-white">
+                <img src="{% static 'images/about/nest.png' %}" alt="Project image placeholder">
+            </div>
+
+            <div class="award-tile is-flip bg-gray" data-award="climate-kic">
+                <div class="tile-inner">
+                    <div class="tile-face tile-front">
+                        <span class="award-name">EIT Climate-KIC</span>
+                    </div>
+                    <div class="tile-face tile-back">
+                        <img src="{% static 'images/about/awards/climate-kic-logo.png' %}" alt="EIT Climate-KIC — logo">
+                    </div>
+                </div>
+            </div>
+
 
         </div>
     </section>
@@ -374,6 +482,40 @@
         observer.observe(el);
         });
     </script>
+
+    <script>
+        (function () {
+            const grid = document.getElementById('recognition-grid');
+            if (!grid) return;
+
+            const selector = '.award-tile.is-flip';
+            const flipTiles = Array.from(grid.querySelectorAll(selector));
+
+            // Close all flips
+            function closeAll() {
+            flipTiles.forEach(t => t.classList.remove('is-active'));
+            }
+
+            // Click on a flip tile: open it, close others
+            grid.addEventListener('click', (e) => {
+            const tile = e.target.closest(selector);
+            if (!tile || !grid.contains(tile)) return;
+
+            // toggle: if already active, close it; else open and close others
+            const isActive = tile.classList.contains('is-active');
+            closeAll();
+            if (!isActive) tile.classList.add('is-active');
+            });
+
+            // Outside click closes all
+            document.addEventListener('click', (e) => {
+            if (!grid.contains(e.target)) closeAll();
+            });
+
+            // Optional: if you ever inject tiles dynamically, reselect flipTiles here
+        })();
+    </script>
+
 
 
 
