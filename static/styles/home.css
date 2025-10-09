@@ -321,6 +321,10 @@
   100% { background-size: 135% 135%, 145% 145%, 155% 155%, 100% 100%; }
 }
 
+@media screen and (orientation: portrait) { 
+  .body::before {animation: none;} 
+}
+
 /*! REDUCED MOTION !*/
 
 @media (prefers-reduced-motion: reduce) {
