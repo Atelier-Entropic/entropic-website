@@ -150,3 +150,42 @@ MEDIA_CACHE_IMMUTABLE = os.environ.get("MEDIA_CACHE_IMMUTABLE", "true").lower() 
 # Default primary key
 # ---------------------------
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# ===========================
+# Email via Outlook / M365
+# ===========================
+
+EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", "django.core.mail.backends.smtp.EmailBackend")
+EMAIL_HOST = os.environ.get("EMAIL_HOST", "smtp.office365.com")
+EMAIL_PORT = int(os.environ.get("EMAIL_PORT", 587))
+EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS", "True").lower() == "true"
+
+# Authenticate with ONE real mailbox you already have (e.g. info@entropic.es)
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "info@entropic.es")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
+
+# What shows in the recipient’s inbox as the sender
+DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "ENTROPIC <info@entropic.es>")
+
+# Fallback recipient if the dropdown value is missing/unknown
+CONTACT_TO_EMAIL = os.environ.get("CONTACT_TO_EMAIL", "info@entropic.es")
+
+# Route by <select name="field"> value (lowercase keys)
+# Make sure your HTML uses these values: collaborate, join, press, competition, other
+CONTACT_ROUTING = {
+    "collaborate": ["info@entropic.es"],
+    "join": ["join@entropic.es"],
+    "press": ["press@entropic.es"],
+    "competition": ["info@entropic.es"],
+    "other": ["info@entropic.es"],
+}
+
+# Subject prefix (optional, keeps your inbox tidy)
+CONTACT_SUBJECT_PREFIX = os.environ.get("CONTACT_SUBJECT_PREFIX", "[Website] ")
+
+# ---- Advanced (optional) ----
+# If you want the visible "From" address to MATCH the selection (e.g. send *as* join@ / press@),
+# set this to "match_selection" AND grant "Send As" permission in Microsoft 365 so the authenticating
+# mailbox can send as those addresses. Otherwise leave as "single".
+CONTACT_FROM_MODE = os.environ.get("CONTACT_FROM_MODE", "single")  # "single" | "match_selection"
+

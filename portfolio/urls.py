@@ -11,6 +11,7 @@ urlpatterns = [
     path("", include("gallery.urls")),
     path("about/",   TemplateView.as_view(template_name="about.html"),   name="about"),
     path("contact/", TemplateView.as_view(template_name="contact.html"), name="contact"),
+    path("contact/submit/", contact_submit, name="contact_submit"),
 ]
 
 # Dev: serve media locally

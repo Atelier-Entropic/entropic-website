@@ -103,29 +103,30 @@
                 </div>
             </div>
 
-            <form class="form" action="#" method="post" novalidate>
+            <form class="form" action="{% url 'contact_submit' %}" method="post" novalidate>
+                {% csrf_token %}
                 <p class="form-intro">Or fill in a form with<br> your inquiry:</p>
 
                 <label for="name">Please write your name:</label>
-                <input id="name" name="name" type="text" autocomplete="name" placeholder="">
+                <input id="name" name="name" type="text" autocomplete="name" required>
 
                 <label for="email">Your e-mail:</label>
-                <input id="email" name="email" type="email" autocomplete="email" placeholder="">
+                <input id="email" name="email" type="email" autocomplete="email" required>
 
                 <div class="row">
                     <div class="col">
                         <label for="subject">What is your inquiry about?</label>
-                        <input id="subject" name="subject" type="text" placeholder="">
+                        <input id="subject" name="subject" type="text" required>
                     </div>
                     <div class="col">
                         <label for="field">Purpose of contact:</label>
                         <div class="select-wrap">
                             <select id="field" name="field">
-                                <option>COLLABORATE</option>
-                                <option>JOIN ENTROPIC</option>
-                                <option>COMPETITION</option>
-                                <option>PRESS</option>
-                                <option>OTHER</option>
+                                <option value="collaborate">COLLABORATE</option>
+                                <option value="join">JOIN ENTROPIC</option>
+                                <option value="competition">COMPETITION</option>
+                                <option value="press">PRESS</option>
+                                <option value="other">OTHER</option>
                             </select>
                         </div>
                     </div>
@@ -133,12 +134,13 @@
 
                 <label for="message" class="sr-only">Your message</label>
                 <div class="message-wrap">
-                    <textarea id="message" name="message" rows="8" placeholder="Your message here"></textarea>
+                    <textarea id="message" name="message" rows="8" placeholder="Your message here" required></textarea>
                     <button class="btn btn-wide" type="submit">Send message</button>
                 </div>
             </form>
-        </section>
-
+            {% if messages %}
+                {% for m in messages %}<p>{{ m }}</p>{% endfor %}
+            {% endif %}
     </div>
 
 
