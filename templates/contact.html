@@ -103,6 +103,20 @@
                 </div>
             </div>
 
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for m in messages %}
+                        <p class="flash {{ m.tags }}">{{ m }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <style>
+                .flash { padding:12px; margin:10px 0; border-radius:6px; }
+                .flash.success { background:#e6ffed; border:1px solid #34c759; }
+                .flash.error { background:#ffecec; border:1px solid #ff3b30; }
+            </style>
+
             <form class="form" action="{% url 'contact_submit' %}" method="post" novalidate>
                 {% csrf_token %}
                 <p class="form-intro">Or fill in a form with<br> your inquiry:</p>
@@ -137,10 +151,7 @@
                     <textarea id="message" name="message" rows="8" placeholder="Your message here" required></textarea>
                     <button class="btn btn-wide" type="submit">Send message</button>
                 </div>
-            </form>
-            {% if messages %}
-                {% for m in messages %}<p>{{ m }}</p>{% endfor %}
-            {% endif %}
+            </form>         
     </div>
 
 

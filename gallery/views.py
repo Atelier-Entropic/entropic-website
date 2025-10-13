@@ -50,15 +50,17 @@ def research_detail(request, slug):
     return render(request, "research.html", {"article": article, "articles": articles})
 
 
+import logging
 from django.conf import settings
 from django.contrib import messages
 from django.core.mail import EmailMessage
-from django.shortcuts import redirect, render, get_object_or_404
+from django.shortcuts import redirect, render
 from django.utils.html import strip_tags
+
+logger = logging.getLogger(__name__)  # add this
 
 def contact_submit(request):
     if request.method != "POST":
-        # if someone visits this URL directly, just show the contact page
         return render(request, "contact.html")
 
     name = strip_tags((request.POST.get("name") or "").strip())
@@ -98,9 +100,10 @@ def contact_submit(request):
             to=recipient_list,
             headers={"Reply-To": user_email},
         ).send(fail_silently=False)
-    except Exception:
-        messages.error(request, "Sorry, we couldn’t send your message right now.")
-        return redirect("contact")
 
-    messages.success(request, "Thanks! Your message has been sent.")
+        logger.info("Contact form sent to %s", recipient_list)
+        messages.success(request, f"✅ Thanks! Your message was sent to {', '.join(recipient_list)}.")
+    except Exception as e:
+        logger.exception("Contact form FAILED")
+        messages.error(request, f"❌ We couldn’t send your message. Error: {e}")
     return redirect("contact")
