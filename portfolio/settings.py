@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # your apps
+    "anymail",
     "gallery",
     "adminsortable2",
 ]
@@ -151,18 +151,20 @@ MEDIA_CACHE_IMMUTABLE = os.environ.get("MEDIA_CACHE_IMMUTABLE", "true").lower() 
 # ---------------------------
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+
 # ===========================
 # Email via Outlook / M365
 # ===========================
 
-EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", "django.core.mail.backends.smtp.EmailBackend")
-EMAIL_HOST = os.environ.get("EMAIL_HOST", "smtp.office365.com")
-EMAIL_PORT = int(os.environ.get("EMAIL_PORT", 587))
-EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS", "True").lower() == "true"
+# USE Microsoft Graph instead of SMTP:
+EMAIL_BACKEND = "anymail.backends.microsoft_graph.EmailBackend"
 
-# Authenticate with ONE real mailbox you already have (e.g. info@entropic.es)
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "info@entropic.es")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
+ANYMAIL = {
+    "MICROSOFT_GRAPH_TENANT_ID": os.environ["MICROSOFT_GRAPH_TENANT_ID"],
+    "MICROSOFT_GRAPH_CLIENT_ID": os.environ["MICROSOFT_GRAPH_CLIENT_ID"],
+    "MICROSOFT_GRAPH_CLIENT_SECRET": os.environ["MICROSOFT_GRAPH_CLIENT_SECRET"],
+}
+
 
 # What shows in the recipient’s inbox as the sender
 DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "ENTROPIC <info@entropic.es>")
@@ -183,9 +185,5 @@ CONTACT_ROUTING = {
 # Subject prefix (optional, keeps your inbox tidy)
 CONTACT_SUBJECT_PREFIX = os.environ.get("CONTACT_SUBJECT_PREFIX", "[Website] ")
 
-# ---- Advanced (optional) ----
-# If you want the visible "From" address to MATCH the selection (e.g. send *as* join@ / press@),
-# set this to "match_selection" AND grant "Send As" permission in Microsoft 365 so the authenticating
-# mailbox can send as those addresses. Otherwise leave as "single".
-CONTACT_FROM_MODE = os.environ.get("CONTACT_FROM_MODE", "single")  # "single" | "match_selection"
+CONTACT_FROM_MODE = os.environ.get("CONTACT_FROM_MODE", "single")
 
