@@ -156,16 +156,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Email via Outlook / M365
 # ===========================
 
-# USE Microsoft Graph instead of SMTP:
-EMAIL_BACKEND = "anymail.backends.microsoft_graph.EmailBackend"
-
-ANYMAIL = {
-    "MICROSOFT_GRAPH_TENANT_ID": os.environ["MICROSOFT_GRAPH_TENANT_ID"],
-    "MICROSOFT_GRAPH_CLIENT_ID": os.environ["MICROSOFT_GRAPH_CLIENT_ID"],
-    "MICROSOFT_GRAPH_CLIENT_SECRET": os.environ["MICROSOFT_GRAPH_CLIENT_SECRET"],
-}
-
-
 # What shows in the recipient’s inbox as the sender
 DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "ENTROPIC <info@entropic.es>")
 
