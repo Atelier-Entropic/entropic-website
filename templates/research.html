@@ -66,7 +66,7 @@
 <!-- templates/research_detail.html -->
     <div class="research-page">
     <!-- Sidebar -->
-        <aside class="research-sidebar scroll-area js-custom-scroll" id="researchSidebar">
+        {% comment %} <aside class="research-sidebar scroll-area js-custom-scroll" id="researchSidebar">
             <ol class="research-list">
                 {% for item in articles %}
                     <li class="research-list-item">
@@ -76,7 +76,7 @@
                     </li>
                 {% endfor %}
             </ol>
-        </aside>
+        </aside> {% endcomment %}
         
         <button class="articles-toggle" id="articlesToggle" aria-controls="researchSidebar" aria-expanded="false">
                 More articles ▾
