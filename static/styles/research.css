@@ -62,6 +62,7 @@ body{
 
 /*!MAIN ARTICLE*/
 .research-article{
+  width: 100vw;
   position:relative;
   padding:2rem 3rem 6rem;
   overscroll-behavior:auto !important;
