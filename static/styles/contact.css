@@ -276,3 +276,44 @@ body{
 @media (prefers-reduced-motion: reduce) {
   .info .card { animation: none; opacity: 1; transform: none; }
 }
+
+/*!FLASH*/
+
+.flash-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  text-align: center;
+  animation: fadeOut 3s forwards;
+}
+
+.flash {
+  display: inline-block;
+  padding: 16px 28px;
+  margin: 6px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  background: #fff;
+  border: 1px solid #000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  opacity: 0.95;
+}
+
+.flash.success {
+  border-color: #0a0;
+  color: #0a0;
+}
+
+.flash.error {
+  border-color: #c00;
+  color: #c00;
+}
+
+@keyframes fadeOut {
+  0%   { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
