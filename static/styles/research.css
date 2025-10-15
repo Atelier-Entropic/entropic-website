@@ -97,7 +97,7 @@ body{
   line-height:1;
   font-weight:500;
   font-family:'Halyard-Display',sans-serif;
-  max-width:20ch;
+  max-width:15ch;
 }
 .article-meta{
   display:flex; flex-direction:column;
