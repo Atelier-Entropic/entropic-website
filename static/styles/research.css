@@ -94,7 +94,7 @@ body{
 .article-title-wrap{ display:grid; gap:1rem; }
 .article-title{
   font-size:clamp(3rem,7vw,8rem);
-  line-height:.9;
+  line-height:1;
   font-weight:500;
   font-family:'Halyard-Display',sans-serif;
 }
@@ -102,17 +102,17 @@ body{
   display:flex; flex-direction:column;
   justify-content:space-between;
   align-items:flex-end; align-self:stretch; min-height:100%;
-
 }
 .article-index{
+  display: none;
   font-size:clamp(4rem,7vw,8rem);
   font-weight:500;
   font-family:'Halyard-Display',sans-serif;
-  line-height:.9;
+  line-height:1;
 }
 .article-subtitle{
-  font-size:clamp(0.5rem,2vw,1.3rem); width:100%;
-  text-align:right; justify-items:end; font-style:italic;
+  font-size:clamp(0.5rem,2vw,1rem); width:100%;
+  text-align:right; justify-items:end;
 }
 
 /* ───────── Utilities previously used ───────── */
