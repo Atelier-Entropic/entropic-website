@@ -23,7 +23,7 @@ body {
   align-items: flex-end;
   gap: 2rem;
   padding: 2rem 0 2rem 2rem;
-  width: calc(100% - 4rem);
+  width: calc(100% - 2rem);
   overflow-y: hidden;
   margin-bottom: 2.5rem;
 }
@@ -85,7 +85,7 @@ body {
 @media (max-width: 768px) { 
     .project-name {
       padding: 4rem 0 1rem 1rem;
-      width:calc(100%-2rem);
+      width:calc(100%-1rem);
       gap: 0rem;
     }
 
@@ -336,7 +336,7 @@ body {
   color: #ffffff;
   background: none;
   border: none;
-  font-size: 2.5rem;
+  font-size: 1rem;
   line-height: 1;
   padding: .3rem .6rem;
   cursor: pointer;
@@ -352,7 +352,7 @@ body {
   top: 24px;
   right: 24px;
   transform: none;
-  font-size: 2rem;
+  font-size: 1rem;
   color: #ffffff;
 }
 
@@ -370,15 +370,15 @@ body {
     position: fixed;
   }
   .lb-prev {
-    left: 45%;
+    left: 30%;
   }
   .lb-next {
-    right: 45%;
+    right: 30%;
   }
   .lb-close {
     top: 20px;
     right: 20px;
-    font-size: 1.6rem;
+    font-size: 1rem;
   }
 }
 
