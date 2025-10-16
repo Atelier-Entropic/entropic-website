@@ -23,7 +23,7 @@ body {
   align-items: flex-end;
   gap: 2rem;
   padding: 2rem 0 2rem 2rem;
-  width: 100%;
+  width: calc(100% - 4rem);
   overflow-y: hidden;
   margin-bottom: 2.5rem;
 }
@@ -85,6 +85,7 @@ body {
 @media (max-width: 768px) { 
     .project-name {
       padding: 4rem 0 1rem 1rem;
+      width:calc(100%-2rem);
       gap: 0rem;
     }
 
@@ -310,35 +311,79 @@ body {
 .horizontal-gallery::-webkit-scrollbar-thumb:hover {
   background: #888;
 }
+
 /* Lightbox (fullscreen) */
 .lb[hidden] { display: none !important; }
 .lb {
-  position: fixed; inset: 0;
-  background: rgba(0,0,0,0.85);
-  display: grid; place-items: center;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: grid;
+  place-items: center;
   z-index: 9999;
 }
 .lb-media {
-  max-width: 90vw; max-height: 90vh;
+  max-width: 90vw;
+  max-height: 90vh;
   box-shadow: 0 10px 40px rgba(0,0,0,0.5);
 }
+
+/* Buttons — minimalist, white icons only */
 .lb-btn {
-  position: absolute; 
-  top: 50%; 
+  position: absolute;
+  top: 50%;
   transform: translateY(-50%);
   color: #ffffff;
-  font-size: 2rem; 
-  line-height: 1; 
-  padding: .4rem .7rem; 
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  line-height: 1;
+  padding: .3rem .6rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
 }
+.lb-btn:hover {
+  opacity: 0.6;
+}
+
 .lb-prev { left: 24px; }
 .lb-next { right: 24px; }
 .lb-close {
+  top: 24px;
+  right: 24px;
+  transform: none;
+  font-size: 2rem;
   color: #ffffff;
-  top: 24px; right: 24px; transform: none;
-  font-size: 1.6rem;
 }
+
+/* Responsive layout for arrows under image on mobile/tablet */
+@media (max-width: 1000px) {
+  .lb {
+    place-items: center;
+    padding-bottom: 60px; /* space for arrows */
+  }
+  .lb-prev,
+  .lb-next {
+    top: auto;
+    bottom: 40px;
+    transform: none;
+    position: fixed;
+  }
+  .lb-prev {
+    left: 45%;
+  }
+  .lb-next {
+    right: 45%;
+  }
+  .lb-close {
+    top: 20px;
+    right: 20px;
+    font-size: 1.6rem;
+  }
+}
+
 body.no-scroll { overflow: hidden; }
+
 
 
 /*!SUGGESTIONS**/
