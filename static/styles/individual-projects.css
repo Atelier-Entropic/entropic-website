@@ -40,7 +40,7 @@ body {
   line-height: 0.75;
   margin-bottom: 2rem;
   margin-top: 8rem;
-  max-width: 12ch;
+  max-width: 8ch;
 
 }
 .project-name h4 {
@@ -283,6 +283,20 @@ body {
   height: 300px; }
 }
 
+@media (max-width: 400px) {
+  .gallery-item img {
+  height: 200px; 
+  width: auto;
+  object-fit: cover;}
+
+  .gallery-item video {
+  height: 200px; }
+
+  .gallery-item figcaption {
+    font-size: 0.8rem;
+  }
+}
+
 /** Custom Scrollbar */
 .horizontal-gallery::-webkit-scrollbar {
   height: 6px;
@@ -309,13 +323,18 @@ body {
   box-shadow: 0 10px 40px rgba(0,0,0,0.5);
 }
 .lb-btn {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  background: rgba(255,255,255,0.9); border: 1.5px solid #000;
-  font-size: 2rem; line-height: 1; padding: .4rem .7rem; border-radius: 8px;
+  position: absolute; 
+  top: 50%; 
+  transform: translateY(-50%);
+  color: #ffffff;
+  font-size: 2rem; 
+  line-height: 1; 
+  padding: .4rem .7rem; 
 }
 .lb-prev { left: 24px; }
 .lb-next { right: 24px; }
 .lb-close {
+  color: #ffffff;
   top: 24px; right: 24px; transform: none;
   font-size: 1.6rem;
 }
