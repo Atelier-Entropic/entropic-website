@@ -270,9 +270,15 @@ body {
   height: 600px; 
   width: auto;
   object-fit: cover;
+  cursor: inherit;           /* no zoom-in */
+  user-select: none;
+  -webkit-user-drag: none;  
 }
 
 .gallery-item video {
+  cursor: inherit;           /* no zoom-in */
+  user-select: none;
+  -webkit-user-drag: none;  
   height: 600px; 
   width: auto;
   object-fit: cover;

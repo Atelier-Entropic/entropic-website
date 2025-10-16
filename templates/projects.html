@@ -116,7 +116,14 @@
                             <source src="{{ project.image_main.url }}">
                         </video>
                     {% elif project.image_main and project.image_main_is_image %}
-                        <img src="{{ project.image_main.url }}" alt="{{ project.title }}">
+                        <img src="{{ project.image_main.url }}" alt="{{ project.title }}"
+                        decoding="async"
+                            {% if forloop.counter <= 2 %}
+                                loading="eager" fetchpriority="high"
+                            {% else %}
+                                loading="lazy"  fetchpriority="low"
+                            {% endif %}
+                        >
                     {% endif %}
                 </a>
 

@@ -3,31 +3,56 @@
   const track = document.querySelector('.gallery-track');
   if (!gallery || !track) return;
 
-  // --- Drag scroll (mouse) ---
-  let isDown = false, startX = 0, startScrollLeft = 0;
+  // --- Drag scroll with click suppression (works over gaps AND images) ---
+  let isDown = false;
+  let startX = 0;
+  let startScrollLeft = 0;
+  let hasDragged = false;
+  const DRAG_THRESHOLD = 5; // px to count as drag
+
   gallery.addEventListener('mousedown', (e) => {
     isDown = true;
-    gallery.classList.add('dragging');
+    hasDragged = false;
     startX = e.pageX;
     startScrollLeft = gallery.scrollLeft;
+    gallery.classList.add('dragging');
   });
+
   window.addEventListener('mouseup', () => {
     isDown = false;
     gallery.classList.remove('dragging');
   });
+
   gallery.addEventListener('mouseleave', () => {
     isDown = false;
     gallery.classList.remove('dragging');
   });
+
   gallery.addEventListener('mousemove', (e) => {
     if (!isDown) return;
     const dx = e.pageX - startX;
+    if (Math.abs(dx) > DRAG_THRESHOLD) hasDragged = true;
     gallery.scrollLeft = startScrollLeft - dx; // natural drag direction
-  });
+    e.preventDefault(); // prevent text/image selection while dragging
+  }, { passive: false });
+
+  // Swallow the click if a drag happened during this press
+  gallery.addEventListener('click', (e) => {
+    if (hasDragged) {
+      e.stopPropagation();
+      e.preventDefault();
+      hasDragged = false; // reset for the next interaction
+    }
+  }, true); // capture to cancel before inner handlers
 
   // --- Lightbox / Fullscreen for IMAGES only (click to open) ---
   const imgs = Array.from(track.querySelectorAll('.gallery-item img'));
   if (!imgs.length) return;
+
+  // Prevent native image drag ghost (extra safety beyond CSS)
+  imgs.forEach(img => {
+    img.addEventListener('dragstart', (e) => e.preventDefault());
+  });
 
   const lb = document.getElementById('lb');
   const lbImg = lb.querySelector('.lb-media');
@@ -35,7 +60,6 @@
   const btnPrev  = lb.querySelector('.lb-prev');
   const btnNext  = lb.querySelector('.lb-next');
 
-  // Build a list of {src, alt}
   const items = imgs.map(img => ({
     src: img.getAttribute('src'),
     alt: img.getAttribute('alt') || ''
@@ -55,16 +79,16 @@
     lb.hidden = true;
     lb.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('no-scroll');
-    // Optional: free memory for huge images
-    // lbImg.src = '';
   }
   function prev(){ idx = (idx - 1 + items.length) % items.length; openLB(idx); }
   function next(){ idx = (idx + 1) % items.length; openLB(idx); }
 
-  // Click to open on images
+  // IMPORTANT: remove the old zoom-in cursor line and only open on true click
   imgs.forEach((img, i) => {
-    img.style.cursor = 'zoom-in';
-    img.addEventListener('click', () => openLB(i));
+    // no img.style.cursor = 'zoom-in';
+    img.addEventListener('click', () => {
+      if (!hasDragged) openLB(i);
+    });
   });
 
   // Controls
@@ -73,9 +97,7 @@
   btnNext.addEventListener('click', (e) => { e.stopPropagation(); next(); });
 
   // Click outside image closes
-  lb.addEventListener('click', (e) => {
-    if (e.target === lb) closeLB();
-  });
+  lb.addEventListener('click', (e) => { if (e.target === lb) closeLB(); });
 
   // Keyboard: Esc / ← / →
   document.addEventListener('keydown', (e) => {
@@ -85,7 +107,7 @@
     if (e.key === 'ArrowRight') return next();
   });
 
-  // Optional: prevent background scroll on touch while lightbox open
+  // Prevent background scroll on touch while lightbox open
   lb.addEventListener('touchmove', (e) => { if (!lb.hidden) e.preventDefault(); }, { passive: false });
 
 })();
