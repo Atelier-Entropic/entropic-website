@@ -100,9 +100,12 @@ body{
   max-width:15ch;
 }
 .article-meta{
-  display:flex; flex-direction:column;
+  display:flex; 
+  flex-direction:column;
   justify-content:space-between;
-  align-items:flex-end; align-self:stretch; min-height:100%;
+  align-items:flex-end; 
+  align-self:stretch; 
+  min-height:100%;
 }
 .article-index{
   opacity: 0%;
@@ -112,8 +115,10 @@ body{
   line-height:1;
 }
 .article-subtitle{
-  font-size:clamp(0.5rem,2vw,1rem); width:100%;
-  text-align:right; justify-items:end;
+  font-size:clamp(0.5rem,2vw,1rem); 
+  width:100%;
+  text-align:right; 
+  justify-items:end;
 }
 
 /* ───────── Utilities previously used ───────── */
@@ -131,7 +136,9 @@ body{
 
 @media (max-width:1000px){
   .article-header{ grid-template-columns:1fr 160px; gap:1rem; }
-  .research-article{ padding:1.5rem 1.5rem 4rem; }
+  .research-article{
+    width: calc(100vw - 3rem); 
+    padding:1.5rem 1.5rem 4rem; }
   .article-index{ display: none;}
   .article-subtitle{ display: none;}
 }
@@ -185,7 +192,9 @@ body{
 
 /* Give the content a bit more room at very small widths */
 @media (max-width: 560px){
-  .research-article{ padding: 1rem 1rem 3rem; }
+  .research-article{ 
+    width: calc(100vw - 2rem);
+    padding: 1rem 1rem 3rem; }
 }
 
 /*! ____________LAYOUTS (PARTIALS)____________ */

@@ -250,19 +250,17 @@ a[x-apple-data-detectors] {
 .footer-left {
   padding-right: 10rem;
   flex: 1;
-
   max-width: 30ch;
 }
 .footer-right {
   display: flex;
-  flex: 1;
- 
-  max-width: 30ch;
-  gap: 2rem;
+  flex: 2;
+  gap: 0;
+  max-width: 50ch;
 }
 .footer-right-col {
   flex: 1;
-  min-width: 160px;
+  min-width: 250px;
 }
 
 /*!MINI-FOOTER**/
