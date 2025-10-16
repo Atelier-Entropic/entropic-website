@@ -90,13 +90,19 @@ body {
     }
 
     .project-name h1 {
-      font-size: 7rem;
+      font-size: 6rem;
     }
 
     .project-name h4 {
       font-size: 1rem;
       margin-top: 4rem;
       max-width: 40ch;
+    }
+}
+
+@media (max-width: 620px) {
+      .project-name h1 {
+      font-size: 5rem;
     }
 }
 
@@ -246,6 +252,8 @@ body {
   cursor: grabbing;
 }
 
+
+
 .gallery-track {
   display: flex;
   gap: 1rem;
@@ -257,6 +265,7 @@ body {
   flex-direction: column;
   color: white;
 }
+.horizontal-gallery .gallery-item img { cursor: default; }
 .gallery-item img {
   height: 600px; 
   width: auto;
@@ -336,7 +345,7 @@ body {
   color: #ffffff;
   background: none;
   border: none;
-  font-size: 1rem;
+  font-size: 1.5rem;
   line-height: 1;
   padding: .3rem .6rem;
   cursor: pointer;
@@ -352,7 +361,7 @@ body {
   top: 24px;
   right: 24px;
   transform: none;
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: #ffffff;
 }
 
@@ -365,7 +374,7 @@ body {
   .lb-prev,
   .lb-next {
     top: auto;
-    bottom: 40px;
+    bottom: 70px;
     transform: none;
     position: fixed;
   }
@@ -378,7 +387,6 @@ body {
   .lb-close {
     top: 20px;
     right: 20px;
-    font-size: 1rem;
   }
 }
 

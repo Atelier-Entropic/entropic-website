@@ -25,15 +25,6 @@
     gallery.scrollLeft = startScrollLeft - dx; // natural drag direction
   });
 
-  // --- Wheel scroll horizontally when hovering the gallery ---
-  // Converts vertical wheel into horizontal scroll while hovered
-  gallery.addEventListener('wheel', (e) => {
-    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-      e.preventDefault(); // needs non-passive listener (default in inline)
-      gallery.scrollLeft += e.deltaY; // adjust factor if you want faster/slower
-    }
-  }, { passive: false });
-
   // --- Lightbox / Fullscreen for IMAGES only (click to open) ---
   const imgs = Array.from(track.querySelectorAll('.gallery-item img'));
   if (!imgs.length) return;

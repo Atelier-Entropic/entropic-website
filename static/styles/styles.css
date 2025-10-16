@@ -78,10 +78,48 @@ a[x-apple-data-detectors] {
   align-items: center;
   width: 100%
 }
-.logo-svg {
-  height: 1.5rem;
+.logo{
+  --h: 1.5rem;
+  --pl: 2rem;                  
+  --ar: 8.382;
+
+  position: relative;
+  display: inline-block;
+  height: var(--h);
+  width: calc(var(--h) * var(--ar));
+  padding-left: var(--pl);
+}
+.logo-svg{
+  height: 100%;                /* fill the container height */
+  width: 100%;                 /* fill the container width */
   display: block;
-  padding-left: 2rem;
+  visibility: hidden;          /* hidden keeps the box; opacity:0 also ok */
+}
+
+.logo::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--pl);             /* same offset as container padding */
+  height: var(--h);
+  width: calc(var(--h) * var(--ar));
+  pointer-events: none;
+  z-index: 1;
+
+  /* invert the backdrop inside the mask */
+  backdrop-filter: invert(1) contrast(1.06);
+  -webkit-backdrop-filter: invert(1) contrast(1.06);
+
+  /* fit the mask exactly to this box */
+  mask: url("/static/images/icons/ENTROPIC_BLACK.svg") 0 50% / 100% 100% no-repeat;
+  -webkit-mask: url("/static/images/icons/ENTROPIC_BLACK.svg") 0 50% / 100% 100% no-repeat;
+}
+
+/* 4) Firefox fallback (no backdrop-filter support) */
+@supports not (backdrop-filter: invert(1)) {
+  .logo::before { content: none; }
+  .logo { mix-blend-mode: difference; }
+  .logo-svg, .logo-svg * { fill: #fff; }
 }
 
 .nav-menu {
@@ -120,6 +158,7 @@ a[x-apple-data-detectors] {
   transition: all 0.2s ease-in-out;
   text-decoration: none;
 }
+
 
 /*TODO:FIX FALLBACK LATER**/
 .nav-link:hover { 
@@ -192,10 +231,11 @@ a[x-apple-data-detectors] {
 }
 
 @media (max-width: 768px) {
-  .logo-svg {
-    height: 1.2rem;
-    padding-left: 1rem;
-  }
+
+.logo {
+  --h: 1.2rem;
+  --pl: 1rem;
+}
 }
 
 /*!FOOTER POP-UP**/
