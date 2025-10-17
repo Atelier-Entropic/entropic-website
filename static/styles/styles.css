@@ -119,7 +119,7 @@ a[x-apple-data-detectors] {
 @supports not (backdrop-filter: invert(1)) {
   .logo::before { content: none; }
   .logo { mix-blend-mode: difference; }
-  .logo-svg, .logo-svg * { fill: #000; }
+  .logo-svg, .logo-svg * { fill: #000; visibility:visible; }
 }
 
 .nav-menu {
