@@ -22,7 +22,7 @@ body {
   column-count: 4;
   column-gap: var(--marg);
   padding: 1rem 2rem;
-  height: var(--gh);
+  height: calc(var(--gh)+var(--marg));
   width: 100vw;
   column-fill: auto;
   z-index: -10;
@@ -419,7 +419,7 @@ body {
   /* Make sure the FAB is bottom-right */
   .filters-toggle{
     position: fixed;
-    bottom: var(--fabGap,16px);
+    top: 36px;
     right:  var(--fabGap,16px);
     margin: 0;
     width: var(--fabSize,52px);
@@ -436,7 +436,7 @@ body {
     top: auto !important;  
     left: auto !important;
     right: var(--fabGap,16px) !important;
-    bottom: calc(var(--fabGap,16px) + var(--fabSize,52px) + 10px); /* sits above button */
+    top: calc(36px + var(--fabSize,52px) + 10px); /* sits above button */
     height: auto !important;
     transform: translateY(8px) scale(.98) !important;
     will-change: transform, opacity;
