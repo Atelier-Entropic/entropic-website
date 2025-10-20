@@ -16,6 +16,7 @@ body {
   column-gap: 0.9rem;
   padding: 1rem 2rem;
   width: 100vw;
+  height: 100vh;
   column-fill: auto;
   z-index: -10;
   overflow-x: scroll
@@ -233,8 +234,8 @@ body {
   .project-title { font-size: 2rem; margin: 0 0 0.5rem 0; }
 }
 
-@media (max-height: 560px),
-       (orientation: landscape) and (max-height: 600px) {
+@media (max-height: 800px),
+       (orientation: landscape) and (max-height: 800px) {
   .projects-gallery{
     position: static;
     top: auto; 
@@ -243,7 +244,7 @@ body {
     width: 100%;
     overflow-x: hidden;
     overflow-y: visible;
-    column-count: 1;
+    column-count: 2;
     column-gap: 0.5rem;
     padding: 0;
   }
