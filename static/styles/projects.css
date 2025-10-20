@@ -11,7 +11,7 @@ body {
 /*!GALLERY*/
 
 :root{
-  --marg:2vh;
+  --marg:1.5dvh;
 }
 .projects-gallery {
   position: fixed;
@@ -19,6 +19,7 @@ body {
   column-count: 4;
   column-gap: var(--marg);
   padding: 1rem 2rem;
+  height: 100dvh;
   width: 100vw;
   column-fill: auto;
   z-index: -10;
@@ -30,7 +31,7 @@ body {
   display: inline-block;
   width: 100%;
   break-inside: avoid;
-  margin-bottom: var(--marg);
+  margin-bottom: var(--marg) !important;
   opacity: 1;
   transition: opacity 0.3s ease;
 }
@@ -50,13 +51,13 @@ body {
 .image-wrapper.vertical::before {
   content: '';
   display: block;
-  height: calc(192.5vh/3 - var(--marg));
+  height: calc(192.5dvh/3 - var(--marg));
   aspect-ratio: 2/3;
 }
 .image-wrapper.horizontal::before {
   content: '';
   display: block;
-  height: calc((192.5vh/3 - var(--marg))/2 - var(--marg)/2);
+  height: calc((192.5dvh/3 - var(--marg))/2 - var(--marg)/2);
 }
 .image-wrapper img {
   position: absolute;
@@ -74,19 +75,16 @@ body {
   display: block;
 }
 
-/* === Reveal on scroll: zoom-in + fade === */
 @keyframes zoomInReveal {
   from { transform: scale(1.05); }
   to   { transform: scale(1); }
 }
 
-/* initial (before reveal) */
 .project.anim .image-wrapper img {
   transform: scale(1.05);
   will-change: transform;
 }
 
-/* play animation once when in view */
 .project.anim.in .image-wrapper img {
   animation: zoomInReveal 1s ease-out forwards;
 }
@@ -127,7 +125,6 @@ body {
   cursor: pointer;    
 }
 
-/* arrows still clickable, nothing special needed */
 .overlay-arrows, .overlay-arrows .arrow { pointer-events: auto; }
 
 .image-wrapper:hover .overlay { opacity: 1; }
@@ -196,10 +193,6 @@ body {
 @media (max-width: 1200px) {
   .projects-gallery { column-count: 3; }
   .project-desc { font-size: 0.8rem; }
-}
-
-@media (min-width: 481px) {
-  .projects-gallery { height: 105vh; overflow-x: scroll; }
 }
 
 @media (max-width: 768px) {
