@@ -56,7 +56,7 @@ body {
 .image-wrapper.horizontal::before {
   content: '';
   display: block;
-  height: calc((192.5vh/3 - var(--marg))/2 - var(--marg));
+  height: calc((192.5vh/3 - var(--marg))/2 - var(--marg)/2);
 }
 .image-wrapper img {
   position: absolute;
