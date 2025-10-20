@@ -12,6 +12,9 @@ body {
 
 :root{
   --marg:1.5dvh;
+  --gh:calc(100dvh - 2rem);
+  --vh:calc(2*var(--gh)/3 - var(--marg));
+  --hh:calc(var(--gh)/3 - var(--marg))
 }
 .projects-gallery {
   position: fixed;
@@ -19,7 +22,7 @@ body {
   column-count: 4;
   column-gap: var(--marg);
   padding: 1rem 2rem;
-  height: 100dvh;
+  height: var(--gh);
   width: 100vw;
   column-fill: auto;
   z-index: -10;
@@ -51,13 +54,13 @@ body {
 .image-wrapper.vertical::before {
   content: '';
   display: block;
-  height: calc(192.5dvh/3 - var(--marg));
+  height: var(--vh) ;
   aspect-ratio: 2/3;
 }
 .image-wrapper.horizontal::before {
   content: '';
   display: block;
-  height: calc((192.5dvh/3 - var(--marg))/2 - var(--marg)/2);
+  height: var(--hh);
 }
 .image-wrapper img {
   position: absolute;
