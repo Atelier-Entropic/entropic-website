@@ -328,10 +328,16 @@
     </div>
 
     <div class="fx-under-icons" aria-hidden="true">
-        <video class="fx-under-icons__video" autoplay muted loop playsinline preload="auto">
-            <source src="{% static 'images/home/birdie.webm' %}" type='video/webm; codecs="vp9"'>
-            <source src="{% static 'images/home/birdie.mov' %}" type='video/quicktime; codecs="hvc1"'>
+        <video id="birdie" class="fx-under-icons__video"
+                autoplay muted loop playsinline preload="metadata"
+                data-mov="{% static 'images/home/birdie.mov' %}"
+                data-webm="{% static 'images/home/birdie.webm' %}">
         </video>
+        <noscript>
+            <video class="fx-under-icons__video" autoplay muted loop playsinline>
+                <source src="{% static 'images/home/birdie.mov' %}" type='video/mp4; codecs="hvc1"'>
+            </video>
+        </noscript>
     </div>
 
     <div id="iconInfo" class="icon-info" aria-hidden="true">
@@ -346,6 +352,22 @@
     <script src="{% static 'scripts/home-scroll.js' %}" defer></script>
     <script src="{% static 'scripts/home-cursor.js' %}" defer></script>
     <script src="{% static 'scripts/home-hover.js' %}" defer></script>
+    <script>
+        (function () {
+        const el = document.getElementById('birdie');
+        if (!el) return;
+        const ua = navigator.userAgent;
+        const isSafari =
+            (/Safari/.test(ua) && /Version\/\d+(\.\d+)?/.test(ua) && !/Chrome|CriOS|FxiOS|EdgiOS/.test(ua))
+            || (/iP(hone|ad|od)/.test(ua) && /WebKit/.test(ua) && !/CriOS|FxiOS|EdgiOS/.test(ua));
+        const src = isSafari ? el.dataset.mov : el.dataset.webm;
+        el.src = src;
+        el.load();
+        const p = el.play?.();
+        if (p && typeof p.catch === 'function') p.catch(()=>{});
+        })();
+    </script>
+
 
 </body>
 </html>
