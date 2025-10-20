@@ -22,7 +22,7 @@ body {
   column-count: 4;
   column-gap: var(--marg);
   padding: 1rem 2rem;
-  height: calc(var(--gh)+var(--marg));
+  height: calc(var(--gh) + 6*var(--marg));
   width: 100vw;
   column-fill: auto;
   z-index: -10;
