@@ -18,6 +18,7 @@ body {
   width: 100vw;
   column-fill: auto;
   z-index: -10;
+  overflow-x: scroll
 }
 .projects-gallery,
 .projects-gallery * { box-sizing: border-box; }
@@ -46,13 +47,13 @@ body {
 .image-wrapper.vertical::before {
   content: '';
   display: block;
-  height: calc(192.5vh/3 - 0.5rem);
+  height: calc(2*(95vh/3) - 0.5rem);
   aspect-ratio: 2/3;
 }
 .image-wrapper.horizontal::before {
   content: '';
   display: block;
-  height: calc((192.5vh/3 - 0.5rem)/2 - 0.5rem);
+  height: calc((95vh/3 - 0.25rem) - 0.5rem);
 }
 
 .image-wrapper img {
@@ -195,13 +196,6 @@ body {
   .project-desc { font-size: 0.8rem; }
 }
 
-@media (min-width: 481px) {
-  .projects-gallery { 
-    height: 105vh; 
-    height: 105svh; 
-    overflow-x: scroll; }
-}
-
 @media (max-width: 900px) {
   .projects-gallery {
     column-count: 2;
@@ -211,8 +205,13 @@ body {
   }
   
   .project { margin-bottom: 0.5rem; }
-  .image-wrapper.vertical::before   { height: calc(190vh/3 - 0.25rem); }
-  .image-wrapper.horizontal::before { height: calc((190vh/3 - 0.25rem)/2 - 0.25rem); }
+  .image-wrapper.vertical::before {
+    height: calc(2*(95vh/3) - 0.25rem);
+    aspect-ratio: 2/3;
+  }
+  .image-wrapper.horizontal::before {
+    height: calc((95vh/3 - 0.12rem) - 0.25rem);
+  }
 }
 
 @media (max-width: 600px) {
@@ -234,8 +233,8 @@ body {
   .project-title { font-size: 2rem; margin: 0 0 0.5rem 0; }
 }
 
-@media (max-height: 560px) and (max-width: 1024px),
-       (orientation: landscape) and (max-height: 600px) and (max-width: 1024px) {
+@media (max-height: 560px),
+       (orientation: landscape) and (max-height: 600px) {
   .projects-gallery{
     position: static;
     top: auto; 
@@ -247,6 +246,13 @@ body {
     column-count: 1;
     column-gap: 0.5rem;
     padding: 0;
+  }
+    .image-wrapper.vertical::before {
+    height: calc(2*(95vh/3) - 0.25rem);
+    aspect-ratio: 2/3;
+  }
+  .image-wrapper.horizontal::before {
+    height: calc((95vh/3 - 0.12rem) - 0.25rem);
   }
 }
 
