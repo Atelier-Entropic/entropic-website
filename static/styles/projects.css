@@ -9,17 +9,19 @@ body {
 }
 
 /*!GALLERY*/
+
+:root{
+  --marg:2vh;
+}
 .projects-gallery {
   position: fixed;
   top: 0; left: 0;
   column-count: 4;
-  column-gap: 0.9rem;
+  column-gap: var(--marg);
   padding: 1rem 2rem;
   width: 100vw;
-  height: 100vh;
   column-fill: auto;
   z-index: -10;
-  overflow-x: scroll
 }
 .projects-gallery,
 .projects-gallery * { box-sizing: border-box; }
@@ -28,7 +30,7 @@ body {
   display: inline-block;
   width: 100%;
   break-inside: avoid;
-  margin-bottom: 1rem;
+  margin-bottom: var(--marg);
   opacity: 1;
   transition: opacity 0.3s ease;
 }
@@ -48,15 +50,14 @@ body {
 .image-wrapper.vertical::before {
   content: '';
   display: block;
-  height: calc(2*(95vh/3) - 0.5rem);
+  height: calc(192.5vh/3 - var(--marg));
   aspect-ratio: 2/3;
 }
 .image-wrapper.horizontal::before {
   content: '';
   display: block;
-  height: calc((95vh/3 - 0.25rem) - 0.5rem);
+  height: calc((192.5vh/3 - var(--marg))/2 - var(--marg));
 }
-
 .image-wrapper img {
   position: absolute;
   inset: 0;
@@ -197,21 +198,15 @@ body {
   .project-desc { font-size: 0.8rem; }
 }
 
-@media (max-width: 900px) {
+@media (min-width: 481px) {
+  .projects-gallery { height: 105vh; overflow-x: scroll; }
+}
+
+@media (max-width: 768px) {
   .projects-gallery {
     column-count: 2;
-    column-gap: 0.5rem;
     padding-left: 1rem;
     padding-right: 1rem;
-  }
-  
-  .project { margin-bottom: 0.5rem; }
-  .image-wrapper.vertical::before {
-    height: calc(2*(95vh/3) - 0.25rem);
-    aspect-ratio: 2/3;
-  }
-  .image-wrapper.horizontal::before {
-    height: calc((95vh/3 - 0.12rem) - 0.25rem);
   }
 }
 
@@ -233,30 +228,6 @@ body {
   }
   .project-title { font-size: 2rem; margin: 0 0 0.5rem 0; }
 }
-
-@media (max-height: 800px),
-       (orientation: landscape) and (max-height: 800px) {
-  .projects-gallery{
-    position: static;
-    top: auto; 
-    left: auto;
-    height: auto;
-    width: 100%;
-    overflow-x: hidden;
-    overflow-y: visible;
-    column-count: 2;
-    column-gap: 0.5rem;
-    padding: 0;
-  }
-    .image-wrapper.vertical::before {
-    height: calc(2*(95vh/3) - 0.25rem);
-    aspect-ratio: 2/3;
-  }
-  .image-wrapper.horizontal::before {
-    height: calc((95vh/3 - 0.12rem) - 0.25rem);
-  }
-}
-
 
 /*!RESPONSIVE — TEXT BLOCKS*/
 @media (max-width: 1200px) {
