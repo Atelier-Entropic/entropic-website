@@ -11,8 +11,8 @@ body {
 /*!GALLERY*/
 
 :root{
-  --marg:1.5vh;
-  --gh:calc(100vh - 2rem);
+  --marg:1.5dvh;
+  --gh:calc(100dvh - 2rem);
   --vh:calc(2*var(--gh)/3 - var(--marg));
   --hh:calc(var(--gh)/3 - var(--marg))
 }
@@ -22,11 +22,11 @@ body {
   column-count: 4;
   column-gap: var(--marg);
   padding: 1rem 2rem;
-  height: calc(var(--gh) + 6*var(--marg));
+  height: calc(var(--gh) + 8*var(--marg));
   width: 100vw;
   column-fill: auto;
   z-index: -10;
-  overflow-x: visible;
+  overflow-x: auto;
 }
 .projects-gallery,
 .projects-gallery * { box-sizing: border-box; }
@@ -241,6 +241,17 @@ body {
 }
 
 
+/*!LANDSCAPE MOBILE*/
+html.mobile-rotated .projects-gallery {
+  position: static;
+  height: auto;
+  width: 100vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+  column-count: 1;
+  column-gap: var(--marg);
+  padding: 0 1rem;
+}
 
 
 /*--------------------------------------------------------------------------------------------------------------*/
