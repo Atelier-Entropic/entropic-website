@@ -151,6 +151,28 @@
     <script src="{% static 'scripts/projects/scroll.js' %}"></script>
     <script src="{% static 'scripts/projects/scroll-indicator.js' %}"></script>
     <script src="{% static 'scripts/projects/animate-gallery.js' %}"></script>
+    <script src="{% static 'scripts/projects/mobile-flip.js' %}"></script>
+    <script>
+        (() => {
+            const root = document.documentElement;
+
+            function syncGutter() {
+                // use the real visible viewport (URL bars accounted for)
+                const vh = (window.visualViewport ? visualViewport.height : innerHeight);
+                // you currently have --marg: 1.5dvh → 0.015 * viewport height
+                const px = Math.max(4, Math.round(vh * 0.015)); // clamp to ≥4px so it never hits 0
+                root.style.setProperty('--marg', px + 'px');     // overwrite the dvh with whole px
+            }
+
+            addEventListener('resize', syncGutter, { passive: true });
+            addEventListener('orientationchange', syncGutter, { passive: true });
+            if ('visualViewport' in window) {
+                visualViewport.addEventListener('resize', syncGutter, { passive: true });
+            }
+            syncGutter();
+        })();
+    </script>
+
 
 </body>
 </html>

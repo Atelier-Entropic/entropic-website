@@ -11,7 +11,7 @@ body {
 /*!GALLERY*/
 
 :root{
-  --marg:1.5dvh;
+  --marg:1.2dvh;
   --gh:calc(100dvh - 2rem);
   --vh:calc(2*var(--gh)/3 - var(--marg));
   --hh:calc(var(--gh)/3 - var(--marg))
@@ -21,6 +21,7 @@ body {
   top: 0; left: 0;
   column-count: 4;
   column-gap: var(--marg);
+  -webkit-column-gap: var(--marg);/*ios problem solver*/
   padding: 1rem 2rem;
   height: calc(var(--gh) + 8*var(--marg));
   width: 100vw;
@@ -254,6 +255,13 @@ html.mobile-rotated .projects-gallery {
 }
 
 
+/*ios problem solver*/
+
+/* Inline-blocks in multicol can introduce stray whitespace; this neutralizes it */
+.projects-gallery { font-size: 0; }
+.project { font-size: initial; } /* restore for children */
+
+
 /*--------------------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------------------*/
@@ -431,8 +439,8 @@ html.mobile-rotated .projects-gallery {
   /* Make sure the FAB is bottom-right */
   .filters-toggle{
     position: fixed;
-    top: 36px;
-    right:  var(--fabGap,16px);
+    top: 52px;
+    left:  var(--fabGap,16px);
     margin: 0;
     width: var(--fabSize,52px);
     height: var(--fabSize,52px);
@@ -446,9 +454,9 @@ html.mobile-rotated .projects-gallery {
   .filters-drawer{
     position: fixed !important;
     top: auto !important;  
-    left: auto !important;
-    right: var(--fabGap,16px) !important;
-    top: calc(36px + var(--fabSize,52px) + 10px); /* sits above button */
+    right: auto !important;
+    left: var(--fabGap,16px) !important;
+    top: calc(52px + var(--fabSize,52px) + 10px); /* sits above button */
     height: auto !important;
     transform: translateY(8px) scale(.98) !important;
     will-change: transform, opacity;
