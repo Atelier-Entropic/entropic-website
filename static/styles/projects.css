@@ -243,23 +243,37 @@ body {
 
 
 /*!LANDSCAPE MOBILE*/
+/* Landscape on mobile-ish devices only (html gets this class from the detector) */
 html.mobile-rotated .projects-gallery {
   position: static;
   height: auto;
   width: 100vw;
   overflow-y: auto;
   overflow-x: hidden;
-  column-count: 1;
+  column-count: 1;                 /* single column */
+  -webkit-column-gap: var(--marg); /* keep your spacing */
   column-gap: var(--marg);
   padding: 0 1rem;
+  z-index: auto;
 }
 
+/* Make ALL cards the vertical size */
+html.mobile-rotated .image-wrapper::before {
+  content: '';
+  display: block;
+  height: var(--tileH);  /* computed in JS above */
+  aspect-ratio: 2 / 3;   /* vertical card shape */
+}
 
-/*ios problem solver*/
-
-/* Inline-blocks in multicol can introduce stray whitespace; this neutralizes it */
-.projects-gallery { font-size: 0; }
-.project { font-size: initial; } /* restore for children */
+/* (Your absolute-positioned img/video already fill the wrapper) */
+html.mobile-rotated .image-wrapper img,
+html.mobile-rotated .image-wrapper video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 
 /*--------------------------------------------------------------------------------------------------------------*/
@@ -456,7 +470,7 @@ html.mobile-rotated .projects-gallery {
     top: auto !important;  
     right: auto !important;
     left: var(--fabGap,16px) !important;
-    top: calc(52px + var(--fabSize,52px) + 10px); /* sits above button */
+    top: calc(80px + var(--fabSize,52px) + 10px); /* sits above button */
     height: auto !important;
     transform: translateY(8px) scale(.98) !important;
     will-change: transform, opacity;
@@ -561,6 +575,22 @@ html.mobile-rotated .projects-gallery {
 @media (max-width: 480px){
   .scroll-hint__desk{ display: none; }
   .scroll-hint__mob { display: inline; }
+}
+
+/* When phone is flipped (vertical scrolling), switch hint direction */
+html.mobile-rotated .scroll-hint__desk {
+  display: none !important;
+}
+
+html.mobile-rotated .scroll-hint__mob {
+  display: inline !important;
+}
+
+/* Optional: tweak its position for vertical scroll */
+html.mobile-rotated .scroll-hint {
+  top: 80%;            /* move lower on the screen if you want */
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 
