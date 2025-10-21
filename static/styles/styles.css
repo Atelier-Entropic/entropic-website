@@ -115,10 +115,9 @@ a[x-apple-data-detectors] {
   -webkit-mask: url("/static/images/icons/ENTROPIC_BLACK.svg") 0 50% / 100% 100% no-repeat;
 }
 
-/* 4) Firefox fallback (no backdrop-filter support) */
 @supports not (backdrop-filter: invert(1)) {
   .logo::before { content: none; }
-  .logo { mix-blend-mode: difference; }
+  .logo { mix-blend-mode: normal; }
   .logo-svg, .logo-svg * { fill: #000; visibility:visible; }
 }
 
@@ -438,21 +437,3 @@ a[x-apple-data-detectors] {
   /* If you cap popup width on tiny screens */
   .footer-popup { max-width: 232px; }
 }
-
-
-/*!PROJECTS PAGE ADDITIONAL CUSTOMIZATION**/
-/* .page-projects .nav-menu {
-  border: 1.5px solid black;
-}
-@media (max-width: 1000px) {
-  .page-projects .nav-menu {
-    border: transparent;
-    border-left: 1.5px solid black;
-  }
-}
-.page-projects .footer-popup,
-.page-projects .static-footer,
-.page-projects .mini-footer {
-  border: 1.5px solid black !important;
-} */
-

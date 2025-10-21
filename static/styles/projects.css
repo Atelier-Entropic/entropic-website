@@ -467,10 +467,10 @@ html.mobile-rotated .image-wrapper video {
 
   .filters-drawer{
     position: fixed !important;
-    top: auto !important;  
+    bottom: auto !important;  
     right: auto !important;
     left: var(--fabGap,16px) !important;
-    top: calc(80px + var(--fabSize,52px) + 10px); /* sits above button */
+    top: calc(52px + var(--fabSize,52px) + 10px); /* sits above button */
     height: auto !important;
     transform: translateY(8px) scale(.98) !important;
     will-change: transform, opacity;

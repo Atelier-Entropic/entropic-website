@@ -12,7 +12,7 @@ body{
 }
 
 .logo-svg {  
-  fill: white;
+  fill: white !important; 
 }
 
 .site-header {
