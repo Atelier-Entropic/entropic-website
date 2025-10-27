@@ -62,22 +62,9 @@
     </header>
 
     <div>
-        <div class="project-name fade-in">
-            <div class="intro">     
-                <h1>{{ project.title }}</h1>
-                <h4>{{ project.intro_text }}</h4>   
-                
-            </div>
-            {% if project.intro_image %}
-                <div class="img-aside">        
-                    <img src="{{ project.intro_image.url }}" alt="{{ project.title }} intro"></img>
-                </div>
-            {% endif %}
-        </div>
-
         <div class="fullscreen-slideshow">
             {% if project.slideshow_1 %}
-            <img src="{{ project.slideshow_1.url }}" alt="Slide 1">
+                <img src="{{ project.slideshow_1.url }}" alt="Slide 1">
             {% endif %}
             {% if project.slideshow_2 %}
                 <img src="{{ project.slideshow_2.url }}" alt="Slide 2">
@@ -85,9 +72,24 @@
             {% if project.slideshow_3 %}
                 <img src="{{ project.slideshow_3.url }}" alt="Slide 3">
             {% endif %}
+
+            <div class="project-name fade-in">
+                <div class="intro">
+                    <h1>{{ project.title }}</h1>
+                    <div class="intro-box">
+                        <h4>{{ project.intro_text }}</h4>
+                    </div>
+                </div>
+
+                {% if project.intro_image %}
+                    <div class="img-aside">        
+                        <img src="{{ project.intro_image.url }}" alt="{{ project.title }} intro"></img>
+                    </div>
+                {% endif %}
+            </div>
         </div>
     </div>
-
+    
     <div class="project-info">
         <div class="text-block fade-on-scroll">
             <h2>Description:</h2>

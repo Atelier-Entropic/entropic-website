@@ -30,8 +30,8 @@ body{
 }
 
 .contact-title {
-  font-weight: 500;
-  font-size: 15rem;
+  font-weight: 400;
+  font-size: 4rem;
   line-height: 0.75;
   margin: 1rem 0 5rem 0;
   color: white;
@@ -45,14 +45,14 @@ body{
 @media (max-width: 1300px) {
 
   .contact-title {
-    font-size: 13rem;
+    font-size: 4rem;
     line-height: 0.8;
   }
 }
 @media (max-width: 900px) {
 
   .contact-title{
-    font-size: 7rem;
+    font-size: 3rem;
     margin: 2rem 0;
   }
 }
@@ -66,7 +66,7 @@ body{
 @media (max-width: 450px) {
 
   .contact-title {
-    font-size: 4.5rem;
+    font-size: 3rem;
     font-weight: 400;
     margin: 1rem 0;
   }
