@@ -61,29 +61,31 @@
         </div>
     </header>
 
-    <div class="project-name fade-in">
-        <div class="intro">     
-            <h1>{{ project.title }}</h1>
-            <h4>{{ project.intro_text }}</h4>   
-            
-        </div>
-        {% if project.intro_image %}
-            <div class="img-aside">        
-                <img src="{{ project.intro_image.url }}" alt="{{ project.title }} intro"></img>
+    <div>
+        <div class="project-name fade-in">
+            <div class="intro">     
+                <h1>{{ project.title }}</h1>
+                <h4>{{ project.intro_text }}</h4>   
+                
             </div>
-        {% endif %}
-    </div>
+            {% if project.intro_image %}
+                <div class="img-aside">        
+                    <img src="{{ project.intro_image.url }}" alt="{{ project.title }} intro"></img>
+                </div>
+            {% endif %}
+        </div>
 
-    <div class="fullscreen-slideshow">
-        {% if project.slideshow_1 %}
-        <img src="{{ project.slideshow_1.url }}" alt="Slide 1">
-        {% endif %}
-        {% if project.slideshow_2 %}
-            <img src="{{ project.slideshow_2.url }}" alt="Slide 2">
-        {% endif %}
-        {% if project.slideshow_3 %}
-            <img src="{{ project.slideshow_3.url }}" alt="Slide 3">
-        {% endif %}
+        <div class="fullscreen-slideshow">
+            {% if project.slideshow_1 %}
+            <img src="{{ project.slideshow_1.url }}" alt="Slide 1">
+            {% endif %}
+            {% if project.slideshow_2 %}
+                <img src="{{ project.slideshow_2.url }}" alt="Slide 2">
+            {% endif %}
+            {% if project.slideshow_3 %}
+                <img src="{{ project.slideshow_3.url }}" alt="Slide 3">
+            {% endif %}
+        </div>
     </div>
 
     <div class="project-info">

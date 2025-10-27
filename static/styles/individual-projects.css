@@ -17,6 +17,7 @@ body {
   margin-bottom: 0;
 }
 
+
 /*!INTRODUCTION**/
 .project-name {
   display: flex;
@@ -41,8 +42,9 @@ body {
   margin-bottom: 2rem;
   margin-top: 8rem;
   max-width: 8ch;
-
+  mix-blend-mode: exclusion;
 }
+
 .project-name h4 {
   margin-top: 5rem;
   line-height: 1.2;
@@ -61,6 +63,8 @@ body {
   object-fit: cover;
   transform: translateY(4rem);
 }
+
+
 
 /*!INTRODUCTION ADJUSTMENTS FOR SCREENS**/
 @media (max-width: 1400px) {
@@ -140,6 +144,32 @@ body {
 .fullscreen-slideshow img.visible {
   opacity: 1;
   z-index: 1;
+}
+
+.fullscreen-slideshow .project-name {
+  position: absolute;
+  bottom: 4rem;
+  left: 4rem;
+  color: white;
+  z-index: 2;
+  width: calc(100% - 8rem);
+  display: flex;
+  align-items: flex-end;
+  gap: 2rem;
+}
+
+.fullscreen-slideshow .intro-box {
+  background: rgba(255, 255, 255);
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+  display: inline-block;
+  max-width: 60ch;
+  margin-top: 2rem;
+}
+
+.fullscreen-slideshow .intro-box h4 {
+  color: #000;
+  margin: 0;
 }
 
 /*!SLIDESHOW ADJUSTMENTS FOR SCREENS**/
