@@ -17,9 +17,10 @@ body {
   margin-bottom: 0;
 }
 
+:root { --headerH: 72px; }
 
 /*!INTRODUCTION**/
-.project-name {
+/* .project-name {
   display: flex;
   align-items: flex-end;
   gap: 2rem;
@@ -27,7 +28,7 @@ body {
   width: calc(100% - 2rem);
   overflow-y: hidden;
   margin-bottom: 2.5rem;
-}
+} */
 
 .project-name .intro {
   flex: 1 1 auto;
@@ -39,14 +40,14 @@ body {
   font-size: 10rem;
   font-weight: 500;
   line-height: 0.75;
-  margin-bottom: 2rem;
-  margin-top: 8rem;
+  /* margin-bottom: 2rem; */
+  /* margin-top: 8rem; */
   max-width: 8ch;
   mix-blend-mode: exclusion;
 }
 
 .project-name h4 {
-  margin-top: 5rem;
+  /* margin-top: 5rem; */
   line-height: 1.2;
   max-width: 50ch;
   text-align: justify;
@@ -129,6 +130,7 @@ body {
   width: 100vw;
   aspect-ratio: 16/9; /* Add this if you want fixed height */
   overflow: hidden;
+  margin-top: -75px; 
 }
 .fullscreen-slideshow img {
   position: absolute;
@@ -148,9 +150,8 @@ body {
 
 .fullscreen-slideshow .project-name {
   position: absolute;
-  bottom: 4rem;
-  left: 4rem;
-  color: white;
+  bottom: 2rem;
+  left: 2rem;
   z-index: 2;
   width: calc(100% - 8rem);
   display: flex;
@@ -160,7 +161,7 @@ body {
 
 .fullscreen-slideshow .intro-box {
   background: rgba(255, 255, 255);
-  padding: 2rem 3rem;
+  padding: 1rem 1rem;
   border-radius: 1rem;
   display: inline-block;
   max-width: 60ch;

@@ -30,10 +30,13 @@ body{
 }
 
 .contact-title {
+  display: block;
+  border-bottom: 1.5px solid white;
   font-weight: 400;
   font-size: 4rem;
   line-height: 0.75;
-  margin: 1rem 0 5rem 0;
+  margin: 6rem 0 4rem 0;
+  padding-bottom: 2rem;
   color: white;
 }
 
@@ -49,13 +52,7 @@ body{
     line-height: 0.8;
   }
 }
-@media (max-width: 900px) {
 
-  .contact-title{
-    font-size: 3rem;
-    margin: 2rem 0;
-  }
-}
 @media (max-width: 768px) {
   .container {padding: 0 1rem;
   margin-top: 8rem;}
@@ -68,7 +65,6 @@ body{
   .contact-title {
     font-size: 3rem;
     font-weight: 400;
-    margin: 1rem 0;
   }
 }
 
