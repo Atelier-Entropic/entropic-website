@@ -35,7 +35,7 @@ body {
 }
 
 .project-name h1 {
-  font-size: 8rem;
+  font-size: 10rem;
   font-weight: 500;
   line-height: 0.75;
   margin-bottom: 2rem;
@@ -65,7 +65,7 @@ body {
 /*!INTRODUCTION ADJUSTMENTS FOR SCREENS**/
 @media (max-width: 1400px) {
     .project-name h1 {
-      font-size: 8rem;
+      font-size: 10rem;
     }
 
     .project-name .img-aside {
@@ -78,7 +78,7 @@ body {
 
 @media (max-width: 1000px) {
       .project-name h1 {
-      font-size: 5rem;
+      font-size: 6rem;
     }
     .project-name .img-aside {
       visibility: hidden;
