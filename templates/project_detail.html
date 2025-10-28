@@ -73,9 +73,9 @@
                 <img src="{{ project.slideshow_3.url }}" alt="Slide 3">
             {% endif %}
 
-            <div class="project-name fade-in">
+            <div class="project-name">
                 <div class="intro">
-                    <h1>{{ project.title }}</h1>
+                    <h1 class="project-title" data-text="{{ project.title }}">{{ project.title }}</h1>
                     <div class="intro-box">
                         <h4>{{ project.intro_text }}</h4>
                     </div>

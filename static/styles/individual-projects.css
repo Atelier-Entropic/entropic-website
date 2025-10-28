@@ -20,15 +20,6 @@ body {
 :root { --headerH: 72px; }
 
 /*!INTRODUCTION**/
-/* .project-name {
-  display: flex;
-  align-items: flex-end;
-  gap: 2rem;
-  padding: 2rem 0 2rem 2rem;
-  width: calc(100% - 2rem);
-  overflow-y: hidden;
-  margin-bottom: 2.5rem;
-} */
 
 .project-name .intro {
   flex: 1 1 auto;
@@ -36,14 +27,13 @@ body {
   
 }
 
-.fullscreen-slideshow .project-name h1 {
+.project-title {
+  position: relative;
   font-size: 10rem;
   font-weight: 500;
   line-height: 0.75;
   margin-bottom: 2rem;
-  /* margin-top: 8rem; */
   max-width: 8ch;
-  mix-blend-mode: difference;  /* or try difference */
   color: #fff; 
 }
 
@@ -66,6 +56,16 @@ body {
   transform: translateY(4rem);
 }
 
+.project-title::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: difference; 
+  color: #fff;                  
+  pointer-events: none;      
+}
+
+.fullscreen-slideshow img { z-index: 0; }
 
 
 /*!INTRODUCTION ADJUSTMENTS FOR SCREENS**/
@@ -94,19 +94,14 @@ body {
     }
 
     .fullscreen-slideshow .project-name h1 {
-      font-size: 4rem;
-    }
+      font-size: 4.5rem;
+      margin-bottom: 1rem;}
 
     .project-name h4 {
       max-width: 40ch;
     }
 }
 
-@media (max-width: 620px) {
-    .fullscreen-slideshow .project-name h1 {
-      font-size: 3.5rem;
-    }
-}
 
 @media (max-width: 400px) { 
     .project-name h4 {
@@ -120,6 +115,7 @@ body {
   aspect-ratio: 16/9; /* Add this if you want fixed height */
   overflow: hidden;
   margin-top: -80px;
+  isolation: isolate;
 }
 .fullscreen-slideshow img {
   position: absolute;
@@ -134,14 +130,12 @@ body {
 }
 .fullscreen-slideshow img.visible {
   opacity: 1;
-  z-index: 1;
 }
 
 .fullscreen-slideshow .project-name {
   position: absolute;
   bottom: 4rem;
   left: 2rem;
-  z-index: 1;
   width: calc(100% - 8rem);
   display: flex;
   align-items: flex-end;
