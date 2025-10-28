@@ -28,6 +28,7 @@ body {
 }
 
 .project-title {
+  color: transparent;
   position: relative;
   font-size: 10rem;
   font-weight: 500;
@@ -60,7 +61,7 @@ body {
   content: attr(data-text);
   position: absolute;
   inset: 0;
-  mix-blend-mode: difference; 
+  mix-blend-mode: exclusion; 
   color: #fff;                  
   pointer-events: none;      
 }
@@ -130,6 +131,7 @@ body {
 }
 .fullscreen-slideshow img.visible {
   opacity: 1;
+  z-index: 0; 
 }
 
 .fullscreen-slideshow .project-name {
