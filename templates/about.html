@@ -75,9 +75,16 @@
         <img class="about-decor fade-in delay-3" src="{% static 'images/icons/diagonal-arrow.svg' %}" />
     </section>
 
-    <div class="team-photo-wrapper zoom-in">
-        <img src="{% static 'images/about/team-photo.webp' %}" alt="Team Photo" class="team-photo" />
+    <div class="team-photo-wrapper zoom-in" data-interval="4000">
+        <img src="{% static 'images/about/entropic-office-1.webp' %}" alt="Team Photo 1" class="team-photo active" />
+        <img src="{% static 'images/about/entropic-office-2.webp' %}" alt="Team Photo 2" class="team-photo" />
+        <img src="{% static 'images/about/entropic-office-3.webp' %}" alt="Team Photo 3" class="team-photo" />
+        <img src="{% static 'images/about/entropic-office-4.webp' %}" alt="Team Photo 3" class="team-photo" />
+        <img src="{% static 'images/about/entropic-office-5.webp' %}" alt="Team Photo 3" class="team-photo" />
+        <img src="{% static 'images/about/entropic-office-6.webp' %}" alt="Team Photo 3" class="team-photo" />
+        <img src="{% static 'images/about/entropic-office-7.webp' %}" alt="Team Photo 3" class="team-photo" />
     </div>
+
 
     <div class="dropdowns">
         <div class="dropdown">
@@ -546,6 +553,37 @@
             // Optional: if you ever inject tiles dynamically, reselect flipTiles here
         })();
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const wrapper = document.querySelector('.team-photo-wrapper');
+            if (!wrapper) return;
+
+            const slides = Array.from(wrapper.querySelectorAll('.team-photo'));
+            if (slides.length <= 1) { slides[0]?.classList.add('active'); return; }
+
+            const interval = parseInt(wrapper.getAttribute('data-interval') || '4000', 10);
+            let i = 0;
+
+            slides.forEach(s => s.classList.remove('active'));
+            slides[0].classList.add('active');
+
+            // One-time: when the first zoom-in finishes, drop the class so future slides just crossfade
+            const onFirstAnimEnd = () => {
+                wrapper.classList.remove('zoom-in');
+                slides[0].removeEventListener('animationend', onFirstAnimEnd);
+            };
+            slides[0].addEventListener('animationend', onFirstAnimEnd, { once: true });
+
+            setInterval(() => {
+                slides[i].classList.remove('active');
+                i = (i + 1) % slides.length;
+                slides[i].classList.add('active');
+            }, interval);
+            });
+    </script>
+
+
 
 </body>
 </html>

@@ -98,7 +98,6 @@ body {
     }
 
     .project-name h4 {
-      margin-top: 4rem;
       max-width: 40ch;
     }
 }
@@ -111,7 +110,6 @@ body {
 
 @media (max-width: 400px) { 
     .project-name h4 {
-      margin-top: 4rem;
       max-width: 25ch;
     }
 }
@@ -167,7 +165,7 @@ body {
 /*!SLIDESHOW ADJUSTMENTS FOR SCREENS**/
 @media (max-width: 768px) {
   .fullscreen-slideshow {
-    aspect-ratio: 9/16; /* taller container on phones */
+    aspect-ratio: 10/16; /* taller container on phones */
   }
 }
 

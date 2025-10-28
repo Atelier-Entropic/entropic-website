@@ -38,18 +38,24 @@ p  { font-size: 1rem; }
   transform: rotate(90deg);
 }
 .team-photo-wrapper {
-  padding: 0 2rem;
-  height: 500px;
+  
+  height: 800px;
   overflow: hidden;
   position: relative;
 }
 .team-photo {
+  position: absolute; /* stack slides */
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
+  opacity: 0;
+  transition: opacity .6s ease;
   display: block;
 }
+.team-photo.active { opacity: 1; }
+
 
 /*!INTRO ANIMATIONS**/
 .fade-in {
@@ -71,17 +77,21 @@ p  { font-size: 1rem; }
 
 .zoom-in .team-photo {
   transform: scale(1.05);
-  opacity: 0;
-  animation: zoomIn 1.5s ease-out forwards;
-  animation-delay: 0.5s;
+  animation: none;
+  will-change: opacity, transform;
+}
+
+.zoom-in .team-photo.active {
+  animation: zoomIn 1.2s ease-out forwards;
 }
 
 @keyframes zoomIn {
   to {
     transform: scale(1);
-    opacity: 1;
+    opacity: 1; /* this works with .team-photo.active { opacity:1 } */
   }
 }
+
 
 /*!INTRO ADJUSTMENTS FOR SCREENS**/
 @media (max-width: 768px) {
@@ -94,7 +104,7 @@ p  { font-size: 1rem; }
   }
   .team-photo-wrapper {
   padding: 0;
-  height: 300px;
+  height: 500px;
   overflow: hidden;
   position: relative;
   }
