@@ -28,14 +28,14 @@ body {
 }
 
 .project-title {
-  color: transparent;
+  
   position: relative;
   font-size: 10rem;
   font-weight: 500;
   line-height: 0.75;
   margin-bottom: 2rem;
   max-width: 8ch;
-  color: #fff; 
+  color: transparent;
 }
 
 .project-name h4 {
