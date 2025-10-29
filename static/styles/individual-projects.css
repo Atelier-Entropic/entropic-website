@@ -118,6 +118,16 @@ body {
   margin-top: -80px;
   isolation: isolate;
 }
+
+.fullscreen-slideshow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25); /* adjust opacity (0.25–0.5 range) */
+  z-index: 1;
+  pointer-events: none;
+}
+
 .fullscreen-slideshow img {
   position: absolute;
   top: 0;
@@ -142,6 +152,7 @@ body {
   display: flex;
   align-items: flex-end;
   gap: 2rem;
+  z-index: 2;
 }
 
 .fullscreen-slideshow .intro-box {
@@ -151,6 +162,7 @@ body {
   display: inline-block;
   max-width: 60ch;
   margin-top: 2rem;
+  display: none;
 }
 
 .fullscreen-slideshow .intro-box h4 {
