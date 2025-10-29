@@ -61,7 +61,7 @@ body {
   content: attr(data-text);
   position: absolute;
   inset: 0;
-  mix-blend-mode: exclusion; 
+  mix-blend-mode: screen; 
   color: #fff;                  
   pointer-events: none;      
 }
@@ -154,6 +154,7 @@ body {
 }
 
 .fullscreen-slideshow .intro-box h4 {
+  display: none;
   color: #000;
   margin: 0;
 }
