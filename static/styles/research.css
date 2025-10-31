@@ -62,8 +62,10 @@ body{
 
 /*!MAIN ARTICLE*/
 .research-article{
-  width: calc(100vw - 4rem);
+  /* width: calc(100vw - 4rem); */
+  width: calc(70vw - 4rem);
   position:relative;
+  align-items: center;
   padding:1rem 2rem 6rem;
   overscroll-behavior:auto !important;
 }
