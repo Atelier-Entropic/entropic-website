@@ -24,8 +24,8 @@ class Project(models.Model):
     short_description = models.CharField(max_length=255, blank=True)
     slug = models.SlugField(unique=True)
     orientation = models.CharField(max_length=10, choices=ORIENTATION_CHOICES)
-    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
-    location = models.CharField(max_length=20, choices=LOCATION_CHOICES)
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES,blank=True, null=True)
+    location = models.CharField(max_length=20, choices=LOCATION_CHOICES,blank=True, null=True)
     image_main = models.FileField(
         upload_to='projects/',
         validators=[FileExtensionValidator(allowed_extensions=[
