@@ -70,6 +70,13 @@ body {
 
 
 /*!INTRODUCTION ADJUSTMENTS FOR SCREENS**/
+
+@media (min-width:1981px) {
+    .project-title {
+    font-size: 12rem;}
+}
+
+
 @media (max-width: 1400px) {
     .project-name .img-aside {
       max-width: 50vw;
@@ -172,12 +179,7 @@ body {
 }
 
 /*!SLIDESHOW ADJUSTMENTS FOR SCREENS**/
-@media (max-width: 768px) {
-  .fullscreen-slideshow {
-    height: auto;
-    aspect-ratio: 10/16; /* taller container on phones */
-  }
-}
+
 
 @media (max-width: 1000px) {
   .fullscreen-slideshow .project-name { 
