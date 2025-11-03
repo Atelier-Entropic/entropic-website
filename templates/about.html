@@ -54,7 +54,7 @@
             <nav class="nav-menu">
                 <a href="{% url 'home' %}" class="nav-link">Home</a>
                 <a href="{% url 'project_gallery' %}" class="nav-link">Projects</a>
-                <a href="{% url 'research' %}" class="nav-link">News</a>
+                {% comment %} <a href="{% url 'research' %}" class="nav-link">News</a> {% endcomment %}
                 <a href="{% url 'about' %}" class="nav-link active">About</a>
                 <a href="{% url 'contact' %}" class="nav-link contact-link">Contact</a>
             </nav>
@@ -116,7 +116,6 @@
         </div>
     </div>
 
-<!--TODO:CHECK ALL TEXTS IN SERVICES-->
     <section class="services-section">
         <h2><span class="curtain-mask">Our Services</span></h2>
         <div class="additional-cta">

@@ -56,7 +56,7 @@
             <nav class="nav-menu">
                 <a href="{% url 'home' %}" class="nav-link">Home</a>
                 <a href="{% url 'project_gallery' %}" class="nav-link">Projects</a>
-                <a href="{% url 'research' %}" class="nav-link active">News</a>
+                {% comment %} <a href="{% url 'research' %}" class="nav-link active">News</a> {% endcomment %}
                 <a href="{% url 'about' %}" class="nav-link">About</a>
                 <a href="{% url 'contact' %}" class="nav-link contact-link">Contact</a>
             </nav>

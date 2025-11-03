@@ -58,7 +58,7 @@
             <nav class="nav-menu">
                 <a href="{% url 'home' %}" class="nav-link">Home</a>
                 <a href="{% url 'project_gallery' %}" class="nav-link">Projects</a>
-                <a href="{% url 'research' %}" class="nav-link">News</a>
+                {% comment %} <a href="{% url 'research' %}" class="nav-link">News</a> {% endcomment %}
                 <a href="{% url 'about' %}" class="nav-link">About</a>
                 <a href="{% url 'contact' %}" class="nav-link active">Contact</a>
             </nav>
@@ -76,8 +76,8 @@
                     <h3 class="overline">PRESS</h3>
                     <p class="muted">For press releases and publications contact<br> our PR team at:</p>
                     <a class="email" href="mailto:press@entropic.es">press@entropic.es</a>
-                    <p class="muted">Or download our <a class="email" href="{% static 'press/ENTROPIC_Press_Package.zip' %}" download aria-label="Download press package">⭳ Press Package</a></p>
-                </div>
+                    {% comment %} <p class="muted">Or download our <a class="email" href="{% static 'press/ENTROPIC_Press_Package.zip' %}" download aria-label="Download press package">⭳ Press Package</a></p>
+                </div> {% endcomment %}
 
                 <div class="card">
                     <h3 class="overline">HEAD OFFICE</h3>
