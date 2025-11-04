@@ -17,11 +17,7 @@
     <meta property="og:url" content="https://www.entropic.es/">
     <meta property="og:title" content="ENTROPIC | Architectural and Urban Design Office">
     <meta property="og:description" content="ENTROPIC creates regenerative environments and curated public realms across Europe and the Middle East.">
-    {% if project.slideshow_1 %}
-        <meta property="og:image" content="{{ request.build_absolute_uri(project.slideshow_1.url) }}">
-    {% else %}
-        <meta property="og:image" content="https://www.entropic.es/static/images/og/og.webp">
-    {% endif %}
+    <meta property="og:image" content="https://www.entropic.es/static/images/og/og.webp">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/icons/favicon/apple-touch-icon.png' %}">
