@@ -33,7 +33,6 @@
   <!-- Styles -->
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
     <link rel="stylesheet" href="{% static 'styles/projects.css' %}">
-    <link rel="preload" href="{{ project.image_main.url }}" as="image">
   
 </head>
 
@@ -123,7 +122,7 @@
                             <source src="{{ project.image_main.url }}">
                         </video>
                     {% elif project.image_main and project.image_main_is_image %}
-                        <img src="{{ project.image_main.url }}" alt="{{ project.title }}" decoding="async" fetchpriority="high" loading="eager">
+                        <img src="{{ project.image_main.url }}" alt="{{ project.title }}">
                     {% endif %}
                 </a>
 
