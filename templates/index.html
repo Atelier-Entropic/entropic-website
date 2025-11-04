@@ -14,6 +14,12 @@
     <meta name="author" content="ENTROPIC">
     <meta name="format-detection" content="telephone=no,email=no,address=no">
 
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.entropic.es/">
+    <meta property="og:title" content="ENTROPIC | Architectural and Urban Design Office">
+    <meta property="og:description" content="ENTROPIC creates regenerative environments and curated public realms across Europe and the Middle East.">
+    <meta property="og:image" content="https://www.entropic.es/static/images/og/og.webp">
+    <meta name="twitter:card" content="summary_large_image">
 
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/icons/favicon/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/icons/favicon/favicon-32x32.png' %}">
@@ -21,7 +27,6 @@
     <link rel="manifest" href="{% static 'images/icons/favicon/site.webmanifest' %}">
     
   <!-- Fonts  -->
-    <link rel="stylesheet" href="https://use.typekit.net/ucm2cim.css">
     <link rel="stylesheet" href="https://use.typekit.net/ucm2cim.css">
 
   <!-- Styles -->
@@ -351,19 +356,29 @@
     <script src="{% static 'scripts/home-cursor.js' %}" defer></script>
     <script src="{% static 'scripts/home-hover.js' %}" defer></script>
     <script>
-        (function () {
+    (function () {
         const el = document.getElementById('birdie');
         if (!el) return;
+
         const ua = navigator.userAgent;
-        const isSafari =
-            (/Safari/.test(ua) && /Version\/\d+(\.\d+)?/.test(ua) && !/Chrome|CriOS|FxiOS|EdgiOS/.test(ua))
-            || (/iP(hone|ad|od)/.test(ua) && /WebKit/.test(ua) && !/CriOS|FxiOS|EdgiOS/.test(ua));
+        const isIOSWebKit = /iP(hone|ad|od)/.test(ua) && /WebKit/.test(ua) && !/CriOS|FxiOS|EdgiOS/.test(ua);
+        const isSafari = (/Safari/.test(ua) && /Version\/\d+(\.\d+)?/.test(ua) && !/Chrome|CriOS|FxiOS|EdgiOS/.test(ua)) || isIOSWebKit;
+        const isFirefox = /Firefox\/\d+/.test(ua) || /FxiOS/.test(ua);
+
+        // Just hide or remove the element in Firefox
+        if (isFirefox) {
+            el.style.display = 'none'; // or el.remove(); if you prefer
+            return;
+        }
+
         const src = isSafari ? el.dataset.mov : el.dataset.webm;
-        el.src = src;
-        el.load();
-        const p = el.play?.();
-        if (p && typeof p.catch === 'function') p.catch(()=>{});
-        })();
+        if (src) {
+            el.src = src;
+            el.load();
+            const p = el.play?.();
+            if (p && typeof p.catch === 'function') p.catch(()=>{});
+        }
+    })();
     </script>
 
 

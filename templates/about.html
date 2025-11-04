@@ -14,15 +14,20 @@
     <meta name="author" content="ENTROPIC">
     <meta name="format-detection" content="telephone=no,email=no,address=no">
 
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.entropic.es/">
+    <meta property="og:title" content="ENTROPIC | Architectural and Urban Design Office">
+    <meta property="og:description" content="ENTROPIC creates regenerative environments and curated public realms across Europe and the Middle East.">
+    <meta property="og:image" content="https://www.entropic.es/static/images/og/og.webp">
+    <meta name="twitter:card" content="summary_large_image">
 
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/icons/favicon/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/icons/favicon/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/icons/favicon/favicon-16x16.png' %}">
     <link rel="manifest" href="{% static 'images/icons/favicon/site.webmanifest' %}">
     
-
-  <link rel="stylesheet" href="https://use.typekit.net/ucm2cim.css">
-  <link rel="stylesheet" href="https://use.typekit.net/ucm2cim.css">
+  <!-- Fonts  -->
+    <link rel="stylesheet" href="https://use.typekit.net/ucm2cim.css">
 
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
     <link rel="stylesheet" href="{% static 'styles/about.css' %}">
@@ -324,6 +329,7 @@
 
     <section class="team-slider-section">
         <h2>Behind The Scenes:</h2>
+        <button class="team-arrow left" aria-label="Scroll left">⟵</button>
         <div class="team-slider" id="teamSlider">
             <div class="team-member">
                 <div class="photo"><img src="{% static 'images/about/team/geoffrey-eberle.png' %}"/></div>
@@ -411,6 +417,7 @@
                 <p>Vincent Van Dog</p>
             </div>
         </div>
+        <button class="team-arrow right" aria-label="Scroll right">⟶</button>
     </section>
 
     <section class="cta-section">
