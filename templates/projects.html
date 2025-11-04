@@ -18,7 +18,7 @@
     <meta property="og:url" content="https://www.entropic.es/">
     <meta property="og:title" content="ENTROPIC | Architectural and Urban Design Office">
     <meta property="og:description" content="ENTROPIC creates regenerative environments and curated public realms across Europe and the Middle East.">
-    <meta property="og:image" content="https://www.entropic.es/static/images/og/og-default.jpg">
+    <meta property="og:image" content="https://www.entropic.es/static/images/og/og.webp">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/icons/favicon/apple-touch-icon.png' %}">
@@ -121,7 +121,7 @@
                             <source src="{{ project.image_main.url }}">
                         </video>
                     {% elif project.image_main and project.image_main_is_image %}
-                        <img src="{{ project.image_main.url }}" alt="{{ project.title }}">
+                        <img src="{{ project.image_main.url }}" alt="{{ project.title }}" decoding="async" fetchpriority="high">
                     {% endif %}
                 </a>
 
@@ -138,10 +138,10 @@
 
               <!-- Hidden slider images -->
               {% if project.image_alt1 %}
-                <img class="hidden-slide" src="{{ project.image_alt1.url }}" alt="{{ project.title }} alt1">
+                <img class="hidden-slide lazyload" src="{{ project.image_alt1.url }}" alt="{{ project.title }} alt1" loading="lazy" decoding="async">
               {% endif %}
               {% if project.image_alt2 %}
-                <img class="hidden-slide" src="{{ project.image_alt2.url }}" alt="{{ project.title }} alt2">
+                <img class="hidden-slide lazyload" src="{{ project.image_alt2.url }}" alt="{{ project.title }} alt2" loading="lazy" decoding="async">
               {% endif %}
           </div>
       </div>
@@ -177,6 +177,33 @@
             syncGutter();
         })();
     </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const lazyImages = document.querySelectorAll('img.lazyload');
+
+            const lazyLoad = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                    const image = entry.target;
+                    image.src = image.dataset.src;
+                    image.classList.remove('lazyload');
+                    observer.unobserve(image);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(lazyLoad, {
+                rootMargin: '200px',
+                threshold: 0.1,
+            });
+
+            lazyImages.forEach(image => {
+                observer.observe(image);
+            });
+        });
+    </script>
+
 
 
 </body>
