@@ -33,6 +33,8 @@
   <!-- Styles -->
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
     <link rel="stylesheet" href="{% static 'styles/projects.css' %}">
+    <link rel="preload" href="{{ project.image_alt1.url }}" as="image">
+    <link rel="preload" href="{{ project.image_alt2.url }}" as="image">
   
 </head>
 
