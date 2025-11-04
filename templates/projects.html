@@ -122,7 +122,7 @@
                             <source src="{{ project.image_main.url }}">
                         </video>
                     {% elif project.image_main and project.image_main_is_image %}
-                        <img src="{{ project.image_main.url }}" alt="{{ project.title }}" decoding="async" fetchpriority="high">
+                        <img src="{{ project.image_main.url }}" alt="{{ project.title }}" decoding="async" fetchpriority="high" loading="eager">
                     {% endif %}
                 </a>
 
@@ -139,10 +139,10 @@
 
               <!-- Hidden slider images -->
               {% if project.image_alt1 %}
-                <img class="hidden-slide lazyload" data-src="{{ project.image_alt1.url }}" alt="{{ project.title }} alt1" loading="lazy" decoding="async">
+                <img class="hidden-slide" data-src="{{ project.image_alt1.url }}" alt="{{ project.title }} alt1" >
               {% endif %}
               {% if project.image_alt2 %}
-                <img class="hidden-slide lazyload" data-src="{{ project.image_alt2.url }}" alt="{{ project.title }} alt2" loading="lazy" decoding="async">
+                <img class="hidden-slide" data-src="{{ project.image_alt2.url }}" alt="{{ project.title }} alt2" >
               {% endif %}
           </div>
       </div>
