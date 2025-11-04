@@ -37,6 +37,7 @@
 </head>
 
 <body class="page-projects">
+    <script src="{% static 'scripts/projects/load.js' %}"></script>
   <!--website content -->
     <header class="site-header">
         <div class="header-container">
@@ -138,10 +139,10 @@
 
               <!-- Hidden slider images -->
               {% if project.image_alt1 %}
-                <img class="hidden-slide lazyload" src="{{ project.image_alt1.url }}" alt="{{ project.title }} alt1" loading="lazy" decoding="async">
+                <img class="hidden-slide lazyload" data-src="{{ project.image_alt1.url }}" alt="{{ project.title }} alt1" loading="lazy" decoding="async">
               {% endif %}
               {% if project.image_alt2 %}
-                <img class="hidden-slide lazyload" src="{{ project.image_alt2.url }}" alt="{{ project.title }} alt2" loading="lazy" decoding="async">
+                <img class="hidden-slide lazyload" data-src="{{ project.image_alt2.url }}" alt="{{ project.title }} alt2" loading="lazy" decoding="async">
               {% endif %}
           </div>
       </div>
@@ -177,34 +178,6 @@
             syncGutter();
         })();
     </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const lazyImages = document.querySelectorAll('img.lazyload');
-
-            const lazyLoad = (entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                    const image = entry.target;
-                    image.src = image.dataset.src;
-                    image.classList.remove('lazyload');
-                    observer.unobserve(image);
-                    }
-                });
-            };
-
-            const observer = new IntersectionObserver(lazyLoad, {
-                rootMargin: '200px',
-                threshold: 0.1,
-            });
-
-            lazyImages.forEach(image => {
-                observer.observe(image);
-            });
-        });
-    </script>
-
-
 
 </body>
 </html>
