@@ -141,10 +141,10 @@
 
               <!-- Hidden slider images -->
               {% if project.image_alt1 %}
-                <img class="hidden-slide" data-src="{{ project.image_alt1.url }}" alt="{{ project.title }} alt1" >
+                <img class="hidden-slide" src="{{ project.image_alt1.url }}" alt="{{ project.title }} alt1" >
               {% endif %}
               {% if project.image_alt2 %}
-                <img class="hidden-slide" data-src="{{ project.image_alt2.url }}" alt="{{ project.title }} alt2" >
+                <img class="hidden-slide" src="{{ project.image_alt2.url }}" alt="{{ project.title }} alt2" >
               {% endif %}
           </div>
       </div>
