@@ -106,7 +106,7 @@
                 </div>
             </div>
 
-            {% if messages %}
+            {% comment %} {% if messages %}
                 <div class="flash-messages">
                     {% for m in messages %}
                         <p class="flash {{ m.tags }}">{{ m }}</p>
@@ -148,7 +148,7 @@
                     <textarea id="message" name="message" rows="8" placeholder="Your message here" required></textarea>
                     <button class="btn btn-wide" type="submit">Send message</button>
                 </div>
-            </form>         
+            </form>          {% endcomment %}
     </div>
 
 
