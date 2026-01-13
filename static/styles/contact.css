@@ -71,7 +71,7 @@ body{
 .contact-grid {
 
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 3fr 1fr;
   gap: 2rem;
 }
 
@@ -85,7 +85,7 @@ body{
 .info {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 4rem;
   margin-bottom: 5rem;
 
 }
