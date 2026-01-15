@@ -90,7 +90,7 @@ body {
   will-change: transform;
 }
 
-.project.anim.in .image-wrapper img {
+.project.anim.in .image-wrapper.is-loaded img {
   animation: zoomInReveal 1s ease-out forwards;
 }
 
@@ -129,6 +129,9 @@ body {
   pointer-events: auto;
   cursor: pointer;    
 }
+
+
+
 
 .overlay-arrows, .overlay-arrows .arrow { pointer-events: auto; }
 
@@ -594,3 +597,11 @@ html.mobile-rotated .scroll-hint {
 }
 
 
+.image-wrapper.is-loaded img,
+.image-wrapper.is-loaded video {
+  opacity: 1;
+}
+
+.image-wrapper:not(.is-loaded) .overlay {
+  opacity: 0 !important;
+}

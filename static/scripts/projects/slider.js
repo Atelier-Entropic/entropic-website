@@ -4,6 +4,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const overlay  = wrapper.querySelector(".overlay");
     const imgInLink = wrapper.querySelector("a.image-link img");
 
+    const media = wrapper.querySelector("a.image-link img, a.image-link video");
+    if (media) {
+      const markLoaded = () => wrapper.classList.add("is-loaded");
+
+      if (media.tagName === "IMG") {
+        if (media.complete && media.naturalWidth > 0) {
+          markLoaded();
+        } else {
+          media.addEventListener("load", markLoaded, { once: true });
+          media.addEventListener("error", markLoaded, { once: true });
+        }
+      } else {
+        // video
+        if (media.readyState >= 2) { // HAVE_CURRENT_DATA
+          markLoaded();
+        } else {
+          media.addEventListener("loadeddata", markLoaded, { once: true });
+          media.addEventListener("error", markLoaded, { once: true });
+        }
+      }
+    }
+
     // Make the overlay itself navigate to the project page…
     if (overlay && linkEl) {
       overlay.addEventListener("click", (e) => {
