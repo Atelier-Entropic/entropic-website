@@ -18,7 +18,7 @@ class ProjectAdmin(SortableAdminMixin,admin.ModelAdmin):
         ('Gallery Info', {
             'fields': (
                 'title', 'slug', 'category', 'location', 'orientation',
-                'image_main', 'image_alt1', 'image_alt2','short_description',
+                'image_main', 'short_description',
             )
         }),
         ("Project Page Info", {

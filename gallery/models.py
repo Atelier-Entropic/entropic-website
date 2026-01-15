@@ -45,9 +45,6 @@ class Project(models.Model):
     def image_main_is_image(self):
         return self.image_main and not self.image_main_is_video()
 
-    image_alt1 = models.ImageField(upload_to='projects/', blank=True, null=True)
-    image_alt2 = models.ImageField(upload_to='projects/', blank=True, null=True)
-
     # Intro
     intro_text = models.TextField(blank=True)
 
