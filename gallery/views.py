@@ -40,7 +40,7 @@ def project_detail(request, slug):
         "related_projects": related_projects,
     })
 
-# gallery/views.py
+
 from django.shortcuts import get_object_or_404, render, redirect
 from .models import ResearchArticle
 
