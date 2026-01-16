@@ -94,6 +94,21 @@
             </div>
         </div>
     </div>
+
+    {# Project navigation (prev/next) #}
+    <nav class="project-nav">
+        {% if prev_project %}
+            <a class="project-nav__prev" href="{% url 'project_detail' slug=prev_project.slug %}">
+                ← Previous project
+            </a>
+        {% endif %}
+
+        {% if next_project %}
+            <a class="project-nav__next" href="{% url 'project_detail' slug=next_project.slug %}">
+                Next project →
+            </a>
+        {% endif %}
+    </nav>
     
     <div class="project-info">
         <div class="text-block fade-on-scroll">
@@ -269,6 +284,7 @@
 
     <script src="{% static 'scripts/projects/fade-in.js' %}"></script>
     <script src="{% static 'scripts/projects/slider-additions.js' %}"></script>
+    <script src="{% static 'scripts/projects/keyboard-arrows.js' %}"></script>
 
 </body>
 </html>

@@ -209,6 +209,68 @@ body {
   border-color: transparent;
 }
 
+/*!NAV ARROW**/
+.project-nav {
+    position: fixed;
+    inset: 0;
+    pointer-events: none; /* allows scroll & clicks through */
+    z-index: 900; /* above content, below menus if needed */
+}
+
+.project-nav a {
+    pointer-events: auto; /* re-enable clicks on arrows */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    font-family: inherit;
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: #111;
+
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(6px);
+
+    transition: background 200ms ease, transform 200ms ease;
+}
+
+.project-nav__prev {
+    left: 24px;
+}
+
+.project-nav__next {
+    right: 24px;
+}
+
+.project-nav a:hover {
+    background: rgba(255, 255, 255, 0.95);
+    transform: translateY(-50%) scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .project-nav a {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
+
+    .project-nav__prev {
+        left: 12px;
+    }
+
+    .project-nav__next {
+        right: 12px;
+    }
+}
+
 /*!INFO BLOCK**/
 .project-info {
   display: flex;

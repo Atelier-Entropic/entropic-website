@@ -10,16 +10,33 @@ def project_gallery(request):
 def project_detail(request, slug):
     project = get_object_or_404(Project, slug=slug)
 
-    # ✅ Also order related projects by drag‑and‑drop order
+        # next/prev based on drag-and-drop "order"
+    prev_project = (
+        Project.objects
+        .filter(order__lt=project.order)
+        .order_by("-order")
+        .first()
+    )
+
+    next_project = (
+        Project.objects
+        .filter(order__gt=project.order)
+        .order_by("order")
+        .first()
+    )
+
+    # ✅ Also order related projects randomly
     related_projects = (
         Project.objects
         .filter(category=project.category)
         .exclude(id=project.id)
-        .order_by('order')[:3]  # Limit to 3 suggestions
+        .order_by("?")[:3]
     )
 
     return render(request, "project_detail.html", {
         "project": project,
+        "prev_project": prev_project,
+        "next_project": next_project,
         "related_projects": related_projects,
     })
 
