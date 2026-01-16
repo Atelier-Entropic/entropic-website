@@ -234,8 +234,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    line-height: 1.1rem;
-
+    line-height: 0.9rem;
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(6px);
 
@@ -257,7 +256,7 @@ body {
 
 @media (max-width: 768px) {
     .project-nav a {
-        font-size: 0.6rem;
+        font-size: 0.7rem;
     }
 
     .project-nav__prev {
