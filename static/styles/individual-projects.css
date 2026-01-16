@@ -214,7 +214,7 @@ body {
     position: fixed;
     inset: 0;
     pointer-events: none; /* allows scroll & clicks through */
-    z-index: 900; /* above content, below menus if needed */
+    z-index: 600; /* above content, below menus if needed */
 }
 
 .project-nav a {
@@ -229,7 +229,7 @@ body {
     color: #111;
     width: auto;
     height: auto;
-    border-radius: 990px;
+    border-radius: 999px;
     padding: 8px;
     display: flex;
     align-items: center;
@@ -257,7 +257,7 @@ body {
 @media (max-width: 768px) {
     .project-nav a {
         font-size: 0.7rem;
-        top: 64px;
+        top: 72px;
     }
 
     .project-nav__prev {
