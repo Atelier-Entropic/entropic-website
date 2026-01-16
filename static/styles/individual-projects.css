@@ -257,6 +257,7 @@ body {
 @media (max-width: 768px) {
     .project-nav a {
         font-size: 0.7rem;
+        top: 15%;
     }
 
     .project-nav__prev {
