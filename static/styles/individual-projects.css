@@ -210,72 +210,66 @@ body {
 }
 
 /*!NAV ARROW**/
-.project-nav{
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 900;
+.project-nav {
+    position: fixed;
+    inset: 0;
+    pointer-events: none; /* allows scroll & clicks through */
+    z-index: 900; /* above content, below menus if needed */
 }
 
-.project-nav__btn{
-  pointer-events: auto;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+.project-nav a {
+    pointer-events: auto; /* re-enable clicks on arrows */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    font-family: inherit;
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: #111;
 
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
 
-  padding: 10px 14px;
-  border-radius: 999px; /* pill */
-  text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  font-size: 12px;      /* smaller text */
-  line-height: 1;
-  letter-spacing: 0.02em;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(6px);
 
-  color: #111;
-  background: rgba(255,255,255,0.72);
-  backdrop-filter: blur(8px);
-
-  border: 1px solid rgba(0,0,0,0.10);
-  box-shadow: 0 8px 22px rgba(0,0,0,0.12);
-
-  transition: transform 180ms ease, background 180ms ease, opacity 180ms ease;
-  opacity: 0.85;
+    transition: background 200ms ease, transform 200ms ease;
 }
 
-.project-nav__btn:hover{
-  opacity: 1;
-  background: rgba(255,255,255,0.90);
-  transform: translateY(-50%) scale(1.03);
+.project-nav__prev {
+    left: 24px;
 }
 
-.project-nav__icon{
-  font-size: 14px;
-  line-height: 1;
-  transform: translateY(-0.5px); /* optical alignment */
+.project-nav__next {
+    right: 24px;
 }
 
-.project-nav__label{
-  white-space: nowrap;
+.project-nav a:hover {
+    background: rgba(255, 255, 255, 0.95);
+    transform: translateY(-50%) scale(1.05);
 }
 
-.project-nav__prev{ left: 20px; }
-.project-nav__next{ right: 20px; }
+@media (max-width: 768px) {
+    .project-nav a {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
 
+    .project-nav__prev {
+        left: 12px;
+    }
 
-@media (max-width: 768px){
-  .project-nav__btn{
-    padding: 8px 10px;
-    font-size: 11px;
-    gap: 8px;
-  }
-  .project-nav__prev{ left: 10px; }
-  .project-nav__next{ right: 10px; }
+    .project-nav__next {
+        right: 12px;
+    }
 }
-
 
 /*!INFO BLOCK**/
 .project-info {
