@@ -229,7 +229,7 @@ body {
     color: #111;
     width: auto;
     height: auto;
-    border-radius: 999px;
+    border-radius: 990px;
     padding: 8px;
     display: flex;
     align-items: center;
@@ -257,7 +257,7 @@ body {
 @media (max-width: 768px) {
     .project-nav a {
         font-size: 0.7rem;
-        top: 15%;
+        top: 52px;
     }
 
     .project-nav__prev {
