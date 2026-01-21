@@ -217,6 +217,10 @@ body {
     z-index: 600; /* above content, below menus if needed */
 }
 
+.project-nav a::before {
+    content: attr(data-desktop);
+}
+
 .project-nav a {
     pointer-events: auto; /* re-enable clicks on arrows */
     position: absolute;
@@ -255,9 +259,13 @@ body {
 }
 
 @media (max-width: 768px) {
+
+  .project-nav a::before {
+        content: attr(data-mobile);
+    }
     .project-nav a {
-        font-size: 0.7rem;
-        top: 72px;
+        /* font-size: 0.7rem; */
+        /* bottom: 72px; */
     }
 
     .project-nav__prev {

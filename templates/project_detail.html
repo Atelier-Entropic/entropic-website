@@ -98,17 +98,22 @@
     {# Project navigation (prev/next) #}
     <nav class="project-nav">
         {% if prev_project %}
-            <a class="project-nav__prev" href="{% url 'project_detail' slug=prev_project.slug %}">
-                ← Previous project
+            <a class="project-nav__prev"
+            href="{% url 'project_detail' slug=prev_project.slug %}"
+            data-desktop="← Previous project"
+            data-mobile="← Prev">
             </a>
         {% endif %}
 
         {% if next_project %}
-            <a class="project-nav__next" href="{% url 'project_detail' slug=next_project.slug %}">
-                Next project →
+            <a class="project-nav__next"
+            href="{% url 'project_detail' slug=next_project.slug %}"
+            data-desktop="Next project →"
+            data-mobile="Next →">
             </a>
         {% endif %}
     </nav>
+
     
     <div class="project-info">
         <div class="text-block fade-on-scroll">
