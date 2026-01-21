@@ -66,7 +66,7 @@ a[x-apple-data-detectors] {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 999;
   background-color: transparent;
   display: flex;
   justify-content: space-between;

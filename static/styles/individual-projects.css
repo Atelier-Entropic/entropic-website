@@ -263,10 +263,6 @@ body {
   .project-nav a::before {
         content: attr(data-mobile);
     }
-    .project-nav a {
-        /* font-size: 0.7rem; */
-        /* bottom: 72px; */
-    }
 
     .project-nav__prev {
         left: 1rem;
