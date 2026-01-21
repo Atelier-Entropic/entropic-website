@@ -459,13 +459,14 @@ html.mobile-rotated .image-wrapper video {
     top: 52px;
     left:  var(--fabGap,16px);
     margin: 0;
-    width: var(--fabSize,52px);
-    height: var(--fabSize,52px);
-    padding: 0;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.5rem 0.9rem;
     border-radius: 999px ;
     display: inline-flex;
     align-items: center; justify-content: center;
     z-index: 20;
+    line-height: 1.2;
   }
 
   .filters-drawer{
@@ -473,7 +474,6 @@ html.mobile-rotated .image-wrapper video {
     bottom: auto !important;  
     right: auto !important;
     left: var(--fabGap,16px) !important;
-    top: calc(52px + var(--fabSize,52px) + 10px); /* sits above button */
     height: auto !important;
     transform: translateY(8px) scale(.98) !important;
     will-change: transform, opacity;
@@ -487,7 +487,7 @@ html.mobile-rotated .image-wrapper video {
     width: 100% !important;
     transform: none !important;
     margin-bottom: .5rem;
-    background: #fff;
+    background: #fff; 
   }
 
   .filters-drawer::after{
