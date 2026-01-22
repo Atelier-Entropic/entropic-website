@@ -251,6 +251,7 @@ p  { font-size: 1rem; }
 }
 
 .learn {
+    display: none;
     pointer-events: auto; /* re-enable clicks on arrows */
     color: #111;
     margin-top: 1rem;
