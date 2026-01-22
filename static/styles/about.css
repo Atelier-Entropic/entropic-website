@@ -221,7 +221,7 @@ p  { font-size: 1rem; }
   color: white;
   padding: 1.5rem;
   transition: opacity 0.3s ease;
-  max-width: 500px;
+  width: 100%
 }
 .service h3 {
   margin-bottom: 1rem;
@@ -235,9 +235,12 @@ p  { font-size: 1rem; }
   font-size: 3rem;
 }
 .service p {
-  max-width: 300ch;
+  max-width: 100ch;
 }
 .service:not(.active) .overlay p {
+  display: none;
+}
+.service:not(.active) .overlay button {
   display: none;
 }
 .service.active {
@@ -246,6 +249,33 @@ p  { font-size: 1rem; }
 .service.active .overlay {
   opacity: 1;
 }
+
+.learn {
+    pointer-events: auto; /* re-enable clicks on arrows */
+    color: #111;
+    margin-top: 1rem;
+    width: auto;
+    height: 1.7rem;
+    border-radius: 999px;
+    border: none;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+    justify-self: flex-end;
+    line-height: 0.9rem;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(6px);
+    transition: background 200ms ease, transform 200ms ease;
+}
+
+.learn:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: scale(1.01);
+}
+
+
 .service::after {
   content: '';
   display: block; /* ensures the box is rendered */
