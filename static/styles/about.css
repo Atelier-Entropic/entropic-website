@@ -235,7 +235,7 @@ p  { font-size: 1rem; }
   font-size: 3rem;
 }
 .service p {
-  max-width: 100ch;
+  max-width: 50ch;
 }
 .service:not(.active) .overlay p {
   display: none;
@@ -255,7 +255,7 @@ p  { font-size: 1rem; }
     color: #111;
     margin-top: 1rem;
     width: auto;
-    height: 1.7rem;
+    height: 1.8rem;
     border-radius: 999px;
     border: none;
     padding: 8px;
@@ -264,7 +264,6 @@ p  { font-size: 1rem; }
     justify-content: center;
     align-self: flex-end;
     justify-self: flex-end;
-    line-height: 0.9rem;
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(6px);
     transition: background 200ms ease, transform 200ms ease;
