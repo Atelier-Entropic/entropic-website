@@ -259,6 +259,7 @@ p  { font-size: 1rem; }
     border-radius: 999px;
     border: none;
     padding: 8px;
+    padding-top: 10px;
     display: flex;
     align-items: center;
     justify-content: center;

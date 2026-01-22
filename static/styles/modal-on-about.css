@@ -1,0 +1,46 @@
+body.is-locked { overflow: hidden; }
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  pointer-events: none; /* click-through except panel */
+}
+
+.modal.is-open {
+  display: block;
+  pointer-events: auto;
+}
+
+.modal__panel {
+  width: min(720px, calc(100% - 2rem));
+  margin: 10vh auto 0;
+  background: #fff;
+  color: #111;
+  padding: 1.5rem 1.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(0,0,0,.25);
+  position: relative;
+}
+
+.modal__close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  border: none;
+  background: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal__title {
+  margin: 0 2rem 1rem 0;
+  font-size: 2rem;
+}
+
+.modal__content p {
+  margin: 0;
+  line-height: 1.45;
+}
