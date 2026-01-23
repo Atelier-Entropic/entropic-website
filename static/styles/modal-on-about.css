@@ -6,6 +6,9 @@ body.is-locked { overflow: hidden; }
   z-index: 9999;
   display: none;
   pointer-events: none; /* click-through except panel */
+  width: auto;
+  height: auto;
+  padding: 2 rem;
 }
 
 .modal.is-open {
@@ -14,14 +17,13 @@ body.is-locked { overflow: hidden; }
 }
 
 .modal__panel {
-  width: min(720px, calc(100% - 2rem));
-  margin: 10vh auto 0;
   background: #fff;
   color: #111;
   padding: 1.5rem 1.5rem 2rem;
   border-radius: 16px;
-  box-shadow: 0 24px 60px rgba(0,0,0,.25);
+  box-shadow: 0 0px 100px rgba(0,0,0,.25);
   position: relative;
+  height: calc(100vh - 8rem);
 }
 
 .modal__close {
@@ -30,9 +32,10 @@ body.is-locked { overflow: hidden; }
   right: 0.75rem;
   border: none;
   background: none;
-  font-size: 1.6rem;
+  font-size: 4rem;
   cursor: pointer;
   line-height: 1;
+  font-weight: 100;
 }
 
 .modal__title {
@@ -43,4 +46,11 @@ body.is-locked { overflow: hidden; }
 .modal__content p {
   margin: 0;
   line-height: 1.45;
+}
+
+.modal__subtitle {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #9b9b9b;
 }
